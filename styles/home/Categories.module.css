@@ -1,0 +1,38 @@
+.categories {
+  display: flex;
+  flex-direction: column;
+  padding: var(--section_padding);
+}
+
+.categories h2 {
+  margin-bottom: 1rem;
+}
+
+.items {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.item {
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: var(--chocolate);
+}
+
+.categories button {
+  width: 10rem;
+  height: 2.75rem;
+  align-self: center;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: var(--yellow);
+  border: 1px solid var(--chocolate);
+}
