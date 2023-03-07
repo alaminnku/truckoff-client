@@ -7,12 +7,12 @@ import { BsTruck } from "react-icons/bs";
 import { AiOutlineHome } from "react-icons/ai";
 import styles from "@styles/layout/MobileMenu.module.css";
 
-interface MobileMenuProps {
+interface IMobileMenuProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, setIsOpen }: IMobileMenuProps) {
   // Disable body scroll if MobileMenu is open
   useEffect(() => {
     const body = document.querySelector("body");

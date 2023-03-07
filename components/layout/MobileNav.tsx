@@ -2,12 +2,12 @@ import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 import styles from "@styles/layout/MobileNav.module.css";
 
-interface MobileNavProps {
+interface IMobileNavProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
+export default function MobileNav({ isOpen, setIsOpen }: IMobileNavProps) {
   return (
     <nav className={styles.mobile_nav}>
       <div className={styles.logo}>
