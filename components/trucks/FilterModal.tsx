@@ -1,8 +1,14 @@
+import { ITruck } from "@types";
+import { useData } from "@contexts/Data";
 import { FiFilter } from "react-icons/fi";
 import styles from "@styles/trucks/FilterModal.module.css";
-import { ChangeEvent, useState } from "react";
+import { Dispatch, useState, ChangeEvent, SetStateAction } from "react";
 
-export default function FilterModal() {
+interface IFilterModalProps {
+  setTrucks: Dispatch<SetStateAction<ITruck[]>>;
+}
+
+export default function FilterModal({ setTrucks }: IFilterModalProps) {
   // Initial states
   const initialTruckState = {
     name: "",
@@ -11,22 +17,23 @@ export default function FilterModal() {
   };
 
   const initialLocationState = {
-    newSouthWales: false,
-    westernAustralia: false,
     victoria: false,
-    southAustralia: false,
     queensland: false,
+    newSouthWales: false,
+    southAustralia: false,
+    westernAustralia: false,
   };
 
   const initialBrandState = {
     ford: false,
-    helfightliner: false,
     fuso: false,
     hino: false,
     isuzu: false,
+    helfightliner: false,
   };
 
   // Hooks
+  const { allTrucks } = useData();
   const [truckData, setTruckData] = useState(initialTruckState);
   const [brandData, setBrandData] = useState(initialBrandState);
   const [locationData, setLocationData] = useState(initialLocationState);
@@ -43,7 +50,7 @@ export default function FilterModal() {
   const { ford, fuso, hino, isuzu, helfightliner } = brandData;
 
   // Change truck data
-  function handleChangeTruckData(e: ChangeEvent<HTMLInputElement>) {
+  function changeTruckData(e: ChangeEvent<HTMLInputElement>) {
     setTruckData((currState) => ({
       ...currState,
       [e.target.id]: e.target.value,
@@ -51,7 +58,7 @@ export default function FilterModal() {
   }
 
   // Change location data
-  function handleChangeLocationData(e: ChangeEvent<HTMLInputElement>) {
+  function changeLocationData(e: ChangeEvent<HTMLInputElement>) {
     setLocationData((currState) => ({
       ...currState,
       [e.target.id]: e.target.checked,
@@ -59,14 +66,87 @@ export default function FilterModal() {
   }
 
   // Change brand data
-  function handleChangeBrandData(e: ChangeEvent<HTMLInputElement>) {
+  function changeBrandData(e: ChangeEvent<HTMLInputElement>) {
     setBrandData((currState) => ({
       ...currState,
       [e.target.id]: e.target.checked,
     }));
   }
 
-  console.log({ ...truckData, ...locationData, ...brandData });
+  // Filter trucks
+  function filterTrucks() {
+    // Create empty array
+    let filteredTrucks: ITruck[] = [];
+
+    // Create locations array
+    const locations = Object.entries(locationData)
+      .filter((data) => data[1] === true)
+      .map((data) => data[0].toLowerCase());
+
+    // Create brands array
+    const brands = Object.entries(brandData)
+      .filter((data) => data[1] === true)
+      .map((data) => data[0].toLowerCase());
+
+    // Filter by name
+    if (name) {
+      filteredTrucks =
+        filteredTrucks.length > 0
+          ? filteredTrucks.filter((truck) =>
+              truck.name.toLowerCase().includes(name.toLowerCase())
+            )
+          : allTrucks.data.filter((truck) =>
+              truck.name.toLowerCase().includes(name.toLowerCase())
+            );
+    }
+
+    // Filter by minimum price
+    if (minPrice) {
+      filteredTrucks =
+        filteredTrucks.length > 0
+          ? filteredTrucks.filter((truck) => +truck.price > +minPrice)
+          : allTrucks.data.filter((truck) => +truck.price > +minPrice);
+    }
+
+    // Filter by maximum price
+    if (maxPrice) {
+      filteredTrucks =
+        filteredTrucks.length > 0
+          ? filteredTrucks.filter((truck) => +truck.price < +maxPrice)
+          : allTrucks.data.filter((truck) => +truck.price < +maxPrice);
+    }
+
+    // Filter by locations
+    if (locations.length > 0) {
+      filteredTrucks =
+        filteredTrucks.length > 0
+          ? filteredTrucks.filter((truck) =>
+              locations.includes(
+                truck.location.split(" ").join("").toLowerCase()
+              )
+            )
+          : allTrucks.data.filter((truck) =>
+              locations.includes(
+                truck.location.split(" ").join("").toLowerCase()
+              )
+            );
+    }
+
+    // Filter by brands
+    if (brands.length > 0) {
+      filteredTrucks =
+        filteredTrucks.length > 0
+          ? filteredTrucks.filter((truck) =>
+              brands.includes(truck.brand.toLowerCase())
+            )
+          : allTrucks.data.filter((truck) =>
+              brands.includes(truck.brand.toLowerCase())
+            );
+    }
+
+    // Update state
+    setTrucks(filteredTrucks);
+  }
 
   return (
     <div className={styles.filter_modal}>
@@ -74,13 +154,14 @@ export default function FilterModal() {
         <p className={styles.title}>
           <FiFilter /> Filters
         </p>
+
         <form className={styles.name_and_price}>
           <input
             type="text"
             value={name}
             id="name"
             placeholder="Name"
-            onChange={handleChangeTruckData}
+            onChange={changeTruckData}
           />
           <div>
             <input
@@ -88,13 +169,14 @@ export default function FilterModal() {
               id="minPrice"
               value={minPrice}
               placeholder="Min Price"
-              onChange={handleChangeTruckData}
+              onChange={changeTruckData}
             />
             <input
               type="text"
               id="maxPrice"
+              value={maxPrice}
               placeholder="Max Price"
-              onChange={handleChangeTruckData}
+              onChange={changeTruckData}
             />
           </div>
         </form>
@@ -109,7 +191,7 @@ export default function FilterModal() {
               type="checkbox"
               id="newSouthWales"
               checked={newSouthWales}
-              onChange={handleChangeLocationData}
+              onChange={changeLocationData}
             />
             <label htmlFor="newSouthWales">New South Wales</label>
           </div>
@@ -118,7 +200,7 @@ export default function FilterModal() {
               type="checkbox"
               id="westernAustralia"
               checked={westernAustralia}
-              onChange={handleChangeLocationData}
+              onChange={changeLocationData}
             />
             <label htmlFor="westernAustralia">Western Australia</label>
           </div>
@@ -127,7 +209,7 @@ export default function FilterModal() {
               type="checkbox"
               id="victoria"
               checked={victoria}
-              onChange={handleChangeLocationData}
+              onChange={changeLocationData}
             />
             <label htmlFor="victoria">Victoria</label>
           </div>
@@ -136,7 +218,7 @@ export default function FilterModal() {
               type="checkbox"
               id="southAustralia"
               checked={southAustralia}
-              onChange={handleChangeLocationData}
+              onChange={changeLocationData}
             />
             <label htmlFor="southAustralia">South Australia</label>
           </div>
@@ -145,7 +227,7 @@ export default function FilterModal() {
               type="checkbox"
               id="queensland"
               checked={queensland}
-              onChange={handleChangeLocationData}
+              onChange={changeLocationData}
             />
             <label htmlFor="queensland">Queensland</label>
           </div>
@@ -161,7 +243,7 @@ export default function FilterModal() {
               type="checkbox"
               id="ford"
               checked={ford}
-              onChange={handleChangeBrandData}
+              onChange={changeBrandData}
             />
             <label htmlFor="ford">Ford</label>
           </div>
@@ -170,7 +252,7 @@ export default function FilterModal() {
               type="checkbox"
               id="helfightliner"
               checked={helfightliner}
-              onChange={handleChangeBrandData}
+              onChange={changeBrandData}
             />
             <label htmlFor="helfightliner">Helfightliner</label>
           </div>
@@ -179,7 +261,7 @@ export default function FilterModal() {
               type="checkbox"
               id="fuso"
               checked={fuso}
-              onChange={handleChangeBrandData}
+              onChange={changeBrandData}
             />
             <label htmlFor="fuso">Fuso</label>
           </div>
@@ -188,7 +270,7 @@ export default function FilterModal() {
               type="checkbox"
               id="hino"
               checked={hino}
-              onChange={handleChangeBrandData}
+              onChange={changeBrandData}
             />
             <label htmlFor="hino">Hino</label>
           </div>
@@ -197,14 +279,14 @@ export default function FilterModal() {
               type="checkbox"
               id="isuzu"
               checked={isuzu}
-              onChange={handleChangeBrandData}
+              onChange={changeBrandData}
             />
             <label htmlFor="isuzu">Isuzu</label>
           </div>
         </form>
       </div>
 
-      <button>Apply</button>
+      <button onClick={filterTrucks}>Apply</button>
     </div>
   );
 }
