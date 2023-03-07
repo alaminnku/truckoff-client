@@ -10,6 +10,9 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen }: MobileMenuProps) {
+  // Current year
+  const currentYear = new Date().getFullYear();
+
   // Disable body scroll if MobileMenu is open
   useEffect(() => {
     const body = document.querySelector("body");
@@ -42,6 +45,10 @@ export default function MobileMenu({ isOpen }: MobileMenuProps) {
           </Link>
         </li>
       </ul>
+
+      <p className={styles.copyright}>
+        Copyright &copy; {currentYear} TruckOff. <br /> All rights reserved.
+      </p>
     </div>
   );
 }
