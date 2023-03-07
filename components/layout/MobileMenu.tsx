@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { currentYear } from "@utils";
 import { GrMoney } from "react-icons/gr";
 import { BiGroup } from "react-icons/bi";
@@ -9,9 +9,10 @@ import styles from "@styles/layout/MobileMenu.module.css";
 
 interface MobileMenuProps {
   isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function MobileMenu({ isOpen }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
   // Disable body scroll if MobileMenu is open
   useEffect(() => {
     const body = document.querySelector("body");
@@ -26,25 +27,25 @@ export default function MobileMenu({ isOpen }: MobileMenuProps) {
   return (
     <div className={`${styles.mobile_menu} ${isOpen && styles.open}`}>
       <ul className={styles.nav_items}>
-        <li>
-          <a href="/">
+        <li onClick={() => setIsOpen(false)}>
+          <Link href="/">
             <AiOutlineHome /> Home
-          </a>
+          </Link>
         </li>
 
-        <li>
-          <a href="/trucks">
+        <li onClick={() => setIsOpen(false)}>
+          <Link href="/trucks">
             <BsTruck /> Trucks
-          </a>
+          </Link>
         </li>
 
-        <li>
+        <li onClick={() => setIsOpen(false)}>
           <Link href="/finance">
             <GrMoney /> Finance
           </Link>
         </li>
 
-        <li>
+        <li onClick={() => setIsOpen(false)}>
           <Link href="/about-us">
             <BiGroup /> About Us
           </Link>

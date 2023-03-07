@@ -31,7 +31,7 @@ export default function Trucks() {
               2008 U.D. GW400 6X4 HARDOX 376000KLM RWC$122800+GST SEE COND
             </p>
 
-            <Link href="/truck">View Truck</Link>
+            <Link href="/view-truck">View Truck</Link>
           </div>
         </div>
 
