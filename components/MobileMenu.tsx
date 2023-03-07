@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { useEffect } from "react";
+import { GrMoney } from "react-icons/gr";
+import { BiGroup } from "react-icons/bi";
+import { AiOutlineHome } from "react-icons/ai";
 import styles from "@styles/MobileMenu.module.css";
 
 interface MobileMenuProps {
@@ -22,37 +25,21 @@ export default function MobileMenu({ isOpen }: MobileMenuProps) {
     <div className={`${styles.mobile_menu} ${isOpen && styles.open}`}>
       <ul className={styles.nav_items}>
         <li>
-          <a className={styles.WhatsApp} href="/hello" target="_blank">
-            WhatsApp Us
+          <a href="/">
+            <AiOutlineHome /> Home
           </a>
         </li>
 
         <li>
-          <Link href="/services">Services</Link>
+          <Link href="/finance">
+            <GrMoney /> Finance
+          </Link>
         </li>
 
         <li>
-          <Link href="/portfolio">Portfolio</Link>
-        </li>
-
-        <li>
-          <Link href="/tools">Tools</Link>
-        </li>
-
-        <li>
-          <Link href="/about-us">About Us</Link>
-        </li>
-
-        <li>
-          <Link href="/insights">Insights</Link>
-        </li>
-
-        <li>
-          <Link href="/contact-us">Contact Us</Link>
-        </li>
-
-        <li>
-          <Link href="/request-a-quote">Request a Quote</Link>
+          <Link href="/about-us">
+            <BiGroup /> About Us
+          </Link>
         </li>
       </ul>
     </div>

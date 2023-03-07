@@ -10,25 +10,17 @@ export default function DesktopNav() {
 
       <ul className={styles.navigation}>
         <li>
-          <Link href="/portfolio">Portfolio</Link>
+          <Link href="/finance">Finance</Link>
         </li>
 
         <li>
-          <Link href="/tech-stack">Tech stack</Link>
+          <Link href="/about-us">About Us</Link>
         </li>
 
         <li>
-          <Link href="/contact">Contact</Link>
+          <Link href="/">Home</Link>
         </li>
       </ul>
-
-      <div className={styles.github}>
-        <a
-          href="https://github.com/alaminnku"
-          target="_blank"
-          rel="noreferrer"
-        ></a>
-      </div>
     </nav>
   );
 }
