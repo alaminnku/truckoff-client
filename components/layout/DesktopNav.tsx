@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "@styles/DesktopNav.module.css";
+import styles from "@styles/layout/DesktopNav.module.css";
 
 export default function DesktopNav() {
   return (

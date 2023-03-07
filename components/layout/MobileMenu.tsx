@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { GrMoney } from "react-icons/gr";
 import { BiGroup } from "react-icons/bi";
 import { AiOutlineHome } from "react-icons/ai";
-import styles from "@styles/MobileMenu.module.css";
+import styles from "@styles/layout/MobileMenu.module.css";
 
 interface MobileMenuProps {
   isOpen: boolean;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import MobileNav from "./MobileNav";
 import DesktopNav from "./DesktopNav";
 import MobileMenu from "./MobileMenu";
-import styles from "@styles/Header.module.css";
+import styles from "@styles/layout/Header.module.css";
 
 export default function Header() {
   // Hooks

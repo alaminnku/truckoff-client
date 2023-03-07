@@ -1,0 +1,54 @@
+.hero {
+  position: relative;
+  min-height: 18rem;
+  padding: var(--section_padding);
+}
+
+.hero img {
+  object-fit: cover;
+}
+
+.content {
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  display: flex;
+  text-align: center;
+  color: var(--white);
+  position: absolute;
+  align-items: center;
+  translate: -50% -50%;
+  flex-direction: column;
+}
+
+.content h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.content p {
+  margin-bottom: 1rem;
+}
+
+.content form {
+  width: 80%;
+  position: relative;
+}
+
+.content form input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 2rem;
+}
+
+.content form button {
+  right: 0;
+  border: none;
+  position: absolute;
+  padding: 12.5px 16px;
+  font-weight: 500;
+  font-size: 1rem;
+  background: var(--yellow);
+  border-radius: 0rem 2rem 2rem 0rem;
+}

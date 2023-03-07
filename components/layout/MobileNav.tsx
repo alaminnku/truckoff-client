@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
-import styles from "@styles/MobileNav.module.css";
+import styles from "@styles/layout/MobileNav.module.css";
 
 interface MobileNavProps {
   isOpen: boolean;
