@@ -19,8 +19,8 @@
 }
 
 .logo {
+  font-size: 18px;
   display: inline-block;
-  font-size: 1.5rem;
   color: var(--white);
   font-weight: 600;
 }
