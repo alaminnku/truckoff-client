@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import SortModal from "./SortModal";
+import FilterModal from "./FilterModal";
 import styles from "@styles/trucks/Trucks.module.css";
 import ModalContainer from "@components/layout/ModalContainer";
-import FilterModal from "./FilterModal";
-import SortModal from "./SortModal";
 
 export default function Trucks() {
   // Hooks

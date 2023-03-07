@@ -1,0 +1,64 @@
+.filter_modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter {
+  margin-bottom: 1rem;
+}
+
+.filter:first-child {
+  margin-bottom: 0rem;
+}
+
+.title {
+  display: flex;
+  font-weight: 600;
+  font-size: 18px;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.title svg {
+  margin-right: 0.5rem;
+}
+
+.name_and_price {
+  display: flex;
+  flex-direction: column;
+}
+
+.name_and_price input {
+  padding: 10px;
+  border-radius: 0.25rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border_color);
+}
+
+.name_and_price div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name_and_price div input {
+  width: 48%;
+}
+
+.filter_modal button {
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  padding: 12px 48px;
+  color: var(--white);
+  background: var(--chocolate);
+}
+
+.item {
+  margin-bottom: 0.5rem;
+}
+
+.item input {
+  margin-right: 0.5rem;
+}
