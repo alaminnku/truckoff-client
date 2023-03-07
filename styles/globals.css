@@ -1,0 +1,114 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Inter"),
+    url("/fonts/inter-v7-latin-regular.woff2") format("woff2"),
+    url("/fonts/inter-v7-latin-regular.woff") format("woff");
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Inter 500"),
+    url("/fonts/inter-v7-latin-500.woff2") format("woff2"),
+    url("/fonts/inter-v7-latin-500.woff") format("woff");
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Inter 600"),
+    url("/fonts/inter-v7-latin-600.woff2") format("woff2"),
+    url("/fonts/inter-v7-latin-600.woff") format("woff");
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Inter 700"),
+    url("/fonts/inter-v7-latin-700.woff2") format("woff2"),
+    url("/fonts/inter-v7-latin-700.woff") format("woff");
+  font-display: fallback;
+}
+
+:root {
+  --black: #000;
+  --white: #fff;
+  --gray: #666;
+  --disable_font: #cccccc;
+  --almost_white: #fafafa;
+  --border_color: #eaeaea;
+}
+
+*,
+html,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 1256px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black);
+  font-family: "Inter", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
+h1,
+h2 {
+  line-height: 1.5em;
+}
+
+p,
+a,
+li,
+blockquote {
+  line-height: 1.7em;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+input,
+select,
+textarea {
+  border: none;
+  border-radius: 0px;
+}
+
+textarea {
+  resize: none;
+  font-family: "Inter", sans-serif;
+}
+
+@media (min-width: 1256px) {
+  html,
+  body {
+    border-left: 1px solid var(--almost_white);
+    border-right: 1px solid var(--almost_white);
+  }
+}
