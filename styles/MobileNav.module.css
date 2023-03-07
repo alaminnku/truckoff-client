@@ -4,13 +4,9 @@
   justify-content: space-between;
 }
 
-.logo {
-  width: 2.25rem;
-}
-
 .logo a {
-  display: flex;
-  align-items: center;
+  font-weight: 600;
+  color: var(--yellow);
 }
 
 .hamburger {
@@ -26,9 +22,9 @@
 
 .line {
   width: 1.25rem;
-  height: 2px;
-  background: var(--black);
+  height: 1.5px;
   border-radius: 0.5rem;
+  background: var(--yellow);
   transition: all 0.25s ease-in-out;
 }
 
@@ -37,9 +33,9 @@
   content: "";
   position: absolute;
   width: 1.25rem;
-  height: 2px;
-  background: var(--black);
+  height: 1.5px;
   border-radius: 0.5rem;
+  background: var(--yellow);
   transition: all 0.25s ease-in-out;
 }
 
