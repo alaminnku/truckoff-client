@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useEffect } from "react";
+import { currentYear } from "@utils";
 import { GrMoney } from "react-icons/gr";
 import { BiGroup } from "react-icons/bi";
 import { AiOutlineHome } from "react-icons/ai";
@@ -10,9 +11,6 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen }: MobileMenuProps) {
-  // Current year
-  const currentYear = new Date().getFullYear();
-
   // Disable body scroll if MobileMenu is open
   useEffect(() => {
     const body = document.querySelector("body");
@@ -47,7 +45,7 @@ export default function MobileMenu({ isOpen }: MobileMenuProps) {
       </ul>
 
       <p className={styles.copyright}>
-        Copyright &copy; {currentYear} TruckOff. <br /> All rights reserved.
+        &copy; {currentYear} TruckOff Pty Ltd. <br /> Sydney, Australia.
       </p>
     </div>
   );
