@@ -1,7 +1,7 @@
-import Categories from "@components/home/Categories";
 import Hero from "@components/home/Hero";
+import Categories from "@components/home/Categories";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main>
       <Hero />

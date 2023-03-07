@@ -1,0 +1,80 @@
+.trucks {
+  padding: var(--section_padding);
+}
+
+.trucks h1 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.filter_and_sort {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter_and_sort p {
+  width: 50%;
+  cursor: pointer;
+  text-align: center;
+  color: var(--white);
+  padding: 0.75rem 0rem;
+  background: var(--chocolate);
+}
+
+.filter_and_sort p:first-child {
+  border-right: 1px solid var(--white);
+}
+
+.items {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.item {
+  border-radius: 0.5rem;
+  background: var(--border_color);
+}
+
+.item img {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0rem 0rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem;
+}
+
+.name_and_price {
+  display: flex;
+  margin-bottom: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name_and_price p {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.description {
+  margin-bottom: 1rem;
+}
+
+.item a {
+  border: none;
+  padding: 8px 32px;
+  border-radius: 2rem;
+  color: var(--white);
+  align-self: center;
+  display: inline-block;
+  background: var(--chocolate);
+}

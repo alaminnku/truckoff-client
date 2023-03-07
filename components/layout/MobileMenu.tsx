@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { currentYear } from "@utils";
 import { GrMoney } from "react-icons/gr";
 import { BiGroup } from "react-icons/bi";
+import { BsTruck } from "react-icons/bs";
 import { AiOutlineHome } from "react-icons/ai";
 import styles from "@styles/layout/MobileMenu.module.css";
 
@@ -28,6 +29,12 @@ export default function MobileMenu({ isOpen }: MobileMenuProps) {
         <li>
           <a href="/">
             <AiOutlineHome /> Home
+          </a>
+        </li>
+
+        <li>
+          <a href="/trucks">
+            <BsTruck /> Trucks
           </a>
         </li>
 
