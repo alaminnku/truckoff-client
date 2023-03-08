@@ -51,7 +51,7 @@ export default function Trucks() {
         component={
           <FilterModal
             setTrucks={setTrucks}
-            setShowModalContainer={setShowSortModal}
+            setShowModalContainer={setShowFilterModal}
           />
         }
         showModalContainer={showFilterModal}

@@ -6,9 +6,13 @@ import { Dispatch, useState, ChangeEvent, SetStateAction } from "react";
 
 interface IFilterModalProps {
   setTrucks: Dispatch<SetStateAction<ITruck[]>>;
+  setShowModalContainer: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function FilterModal({ setTrucks }: IFilterModalProps) {
+export default function FilterModal({
+  setTrucks,
+  setShowModalContainer,
+}: IFilterModalProps) {
   // Initial states
   const initialTruckState = {
     name: "",
@@ -125,6 +129,9 @@ export default function FilterModal({ setTrucks }: IFilterModalProps) {
 
     // Update state
     setTrucks(filteredTrucks);
+
+    // Close the modal
+    setShowModalContainer(false);
   }
 
   return (
@@ -265,7 +272,10 @@ export default function FilterModal({ setTrucks }: IFilterModalProps) {
         </form>
       </div>
 
-      <button onClick={filterTrucks}>Apply</button>
+      <div className={styles.buttons}>
+        <button onClick={() => setShowModalContainer(false)}>Cancel</button>
+        <button onClick={filterTrucks}>Apply</button>
+      </div>
     </div>
   );
 }
