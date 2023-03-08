@@ -26,9 +26,9 @@
   background: var(--chocolate);
 }
 
-.categories button {
-  width: 10rem;
-  height: 2.75rem;
+.categories a {
+  padding: 0.5rem 2.5rem;
+  color: var(--black);
   align-self: center;
   border-radius: 0.5rem;
   font-size: 1rem;

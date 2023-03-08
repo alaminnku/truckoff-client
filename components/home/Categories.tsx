@@ -2,6 +2,7 @@ import { MouseEvent } from "react";
 import { useData } from "@contexts/Data";
 import { useRouter } from "next/router";
 import styles from "@styles/home/Categories.module.css";
+import Link from "next/link";
 
 export default function Categories() {
   // Hooks
@@ -45,7 +46,7 @@ export default function Categories() {
         </div>
       </div>
 
-      <button>See More</button>
+      <Link href="/trucks">See More</Link>
     </section>
   );
 }
