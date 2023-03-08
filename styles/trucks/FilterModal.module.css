@@ -53,6 +53,11 @@
   margin-bottom: 0rem;
 }
 
+.item input,
+.item label {
+  cursor: pointer;
+}
+
 .item input {
   margin-right: 0.5rem;
 }
