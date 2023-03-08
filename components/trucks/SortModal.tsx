@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction, useState } from "react";
 import { ITruck } from "@types";
 import { BiSortAlt2 } from "react-icons/bi";
 import styles from "@styles/trucks/SortModal.module.css";
+import { Dispatch, SetStateAction, useState } from "react";
 
 interface ISortModalProps {
   trucks: ITruck[];

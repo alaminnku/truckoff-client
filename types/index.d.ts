@@ -35,6 +35,8 @@ export interface IAllTrucks extends IIsLoading {
 }
 
 export interface IDataContext {
+  trucks: ITruck[];
   allTrucks: IAllTrucks;
+  setTrucks: Dispatch<SetStateAction<ITruck[]>>;
   setAllTrucks: Dispatch<SetStateAction<IAllTrucks>>;
 }

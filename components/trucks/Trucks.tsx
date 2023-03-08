@@ -9,12 +9,12 @@ import ModalContainer from "@components/layout/ModalContainer";
 
 export default function Trucks() {
   // Hooks
-  const { allTrucks } = useData();
+  const { trucks, setTrucks } = useData();
   const [sorted, setSorted] = useState({
     byLowToHigh: false,
     byHighToLow: false,
   });
-  const [trucks, setTrucks] = useState(allTrucks.data);
+  // const [trucks, setTrucks] = useState(allTrucks.data);
   const [showSortModal, setShowSortModal] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
 

@@ -1,4 +1,4 @@
-export const trucks = [
+export const trucksData = [
   {
     name: "2016 VOLVO FM 540 500 460 2016 2015 2014 2013 PHONE DETAILS FM 540 500 460 ALL 13 LITRE",
     year: "2016",
