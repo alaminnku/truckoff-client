@@ -14,7 +14,6 @@ export default function Trucks() {
     byLowToHigh: false,
     byHighToLow: false,
   });
-  // const [trucks, setTrucks] = useState(allTrucks.data);
   const [showSortModal, setShowSortModal] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
 

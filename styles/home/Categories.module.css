@@ -18,6 +18,7 @@
 .item {
   height: 10rem;
   display: flex;
+  cursor: pointer;
   align-items: center;
   color: var(--white);
   justify-content: center;
