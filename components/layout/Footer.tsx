@@ -12,10 +12,10 @@ export default function Footer() {
           TruckOff
         </Link>
         <div className={styles.social}>
-          <a href="www.facebook.com" target="_blank" rel="noreferrer">
+          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
             <CiFacebook />
           </a>
-          <a href="www.instagram.com" target="_blank" rel="noreferrer">
+          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
             <AiOutlineInstagram />
           </a>
         </div>
@@ -29,9 +29,9 @@ export default function Footer() {
         <p className={styles.title}>Get Help</p>
 
         <div className={styles.navigation}>
-          <Link href="/">Sitemap</Link>
-          <Link href="/">Privacy Policy</Link>
-          <Link href="/">Terms & Conditions</Link>
+          <Link href="#">Sitemap</Link>
+          <Link href="#">Privacy Policy</Link>
+          <Link href="#">Terms & Conditions</Link>
         </div>
       </div>
 

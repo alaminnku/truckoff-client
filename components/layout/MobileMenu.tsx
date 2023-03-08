@@ -40,13 +40,13 @@ export default function MobileMenu({ isOpen, setIsOpen }: IMobileMenuProps) {
         </li>
 
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/finance">
+          <Link href="#">
             <GrMoney /> Finance
           </Link>
         </li>
 
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/about-us">
+          <Link href="#">
             <BiGroup /> About Us
           </Link>
         </li>

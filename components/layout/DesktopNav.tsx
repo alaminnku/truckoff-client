@@ -14,11 +14,11 @@ export default function DesktopNav() {
         </li>
 
         <li>
-          <Link href="/finance">Finance</Link>
+          <Link href="#">Finance</Link>
         </li>
 
         <li>
-          <Link href="/about-us">About Us</Link>
+          <Link href="#">About Us</Link>
         </li>
 
         <li>
