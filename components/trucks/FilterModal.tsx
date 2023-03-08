@@ -76,7 +76,7 @@ export default function FilterModal({ setTrucks }: IFilterModalProps) {
   // Filter trucks
   function filterTrucks() {
     // Create empty array
-    let filteredTrucks: ITruck[] = [];
+    let filteredTrucks = allTrucks.data;
 
     // Create locations array
     const locations = Object.entries(locationData)
@@ -90,58 +90,37 @@ export default function FilterModal({ setTrucks }: IFilterModalProps) {
 
     // Filter by name
     if (name) {
-      filteredTrucks =
-        filteredTrucks.length > 0
-          ? filteredTrucks.filter((truck) =>
-              truck.name.toLowerCase().includes(name.toLowerCase())
-            )
-          : allTrucks.data.filter((truck) =>
-              truck.name.toLowerCase().includes(name.toLowerCase())
-            );
+      filteredTrucks = filteredTrucks.filter((truck) =>
+        truck.name.toLowerCase().includes(name.toLowerCase())
+      );
     }
 
     // Filter by minimum price
     if (minPrice) {
-      filteredTrucks =
-        filteredTrucks.length > 0
-          ? filteredTrucks.filter((truck) => +truck.price > +minPrice)
-          : allTrucks.data.filter((truck) => +truck.price > +minPrice);
+      filteredTrucks = filteredTrucks.filter(
+        (truck) => +truck.price > +minPrice
+      );
     }
 
     // Filter by maximum price
     if (maxPrice) {
-      filteredTrucks =
-        filteredTrucks.length > 0
-          ? filteredTrucks.filter((truck) => +truck.price < +maxPrice)
-          : allTrucks.data.filter((truck) => +truck.price < +maxPrice);
+      filteredTrucks = filteredTrucks.filter(
+        (truck) => +truck.price < +maxPrice
+      );
     }
 
     // Filter by locations
     if (locations.length > 0) {
-      filteredTrucks =
-        filteredTrucks.length > 0
-          ? filteredTrucks.filter((truck) =>
-              locations.includes(
-                truck.location.split(" ").join("").toLowerCase()
-              )
-            )
-          : allTrucks.data.filter((truck) =>
-              locations.includes(
-                truck.location.split(" ").join("").toLowerCase()
-              )
-            );
+      filteredTrucks = filteredTrucks.filter((truck) =>
+        locations.includes(truck.location.split(" ").join("").toLowerCase())
+      );
     }
 
     // Filter by brands
     if (brands.length > 0) {
-      filteredTrucks =
-        filteredTrucks.length > 0
-          ? filteredTrucks.filter((truck) =>
-              brands.includes(truck.brand.toLowerCase())
-            )
-          : allTrucks.data.filter((truck) =>
-              brands.includes(truck.brand.toLowerCase())
-            );
+      filteredTrucks = filteredTrucks.filter((truck) =>
+        brands.includes(truck.brand.toLowerCase())
+      );
     }
 
     // Update state
