@@ -1,11 +1,15 @@
+.side_filter_and_sort {
+  display: none;
+}
+
 .trucks {
   padding: var(--section_padding);
 }
 
 .trucks h1 {
+  margin-bottom: 1rem;
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 1rem;
 }
 
 .filter_and_sort {
@@ -67,6 +71,10 @@
 
 .description {
   margin-bottom: 1rem;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .item a {
@@ -77,4 +85,18 @@
   align-self: center;
   display: inline-block;
   background: var(--chocolate);
+}
+
+@media (min-width: 1024px) {
+  .side_filter_and_sort {
+    display: block;
+  }
+
+  .filter_and_sort {
+    display: none;
+  }
+
+  .filter_and_trucks {
+    display: flex;
+  }
 }

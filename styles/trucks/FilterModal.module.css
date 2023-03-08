@@ -57,13 +57,7 @@
   margin-right: 0.5rem;
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.buttons button {
+.filter_modal button {
   border: none;
   cursor: pointer;
   font-size: 1rem;
@@ -73,10 +67,10 @@
   background: var(--chocolate);
 }
 
-.buttons button:last-child {
-  margin-right: 1rem;
-  padding: 10px 48px;
-  background: transparent;
-  color: var(--black);
-  border: 1px solid var(--chocolate);
+@media (min-width: 1024px) {
+  .filter_modal {
+    width: 15rem;
+    margin-right: 1rem;
+    margin-bottom: 1.5rem;
+  }
 }

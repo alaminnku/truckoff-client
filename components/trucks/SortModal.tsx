@@ -5,11 +5,15 @@ import styles from "@styles/trucks/SortModal.module.css";
 
 interface ISortModalProps {
   trucks: ITruck[];
-  setShowModalContainer: Dispatch<SetStateAction<boolean>>;
+  setSorted?: Dispatch<
+    SetStateAction<{ byLowToHigh: boolean; byHighToLow: boolean }>
+  >;
+  setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function SortModal({
   trucks,
+  setSorted,
   setShowModalContainer,
 }: ISortModalProps) {
   // Hooks
@@ -23,12 +27,20 @@ export default function SortModal({
       trucks.sort((a, b) => +b.price - +a.price);
     }
 
+    // Trigger state update
+    setSorted &&
+      setSorted(() =>
+        sortBy === "lowToHigh"
+          ? { byHighToLow: false, byLowToHigh: true }
+          : { byHighToLow: true, byLowToHigh: false }
+      );
+
     // Close the modal
-    setShowModalContainer(false);
+    setShowModalContainer && setShowModalContainer(false);
   }
 
   return (
-    <div>
+    <div className={styles.sort_modal}>
       <p className={styles.title}>
         <BiSortAlt2 /> Sort options
       </p>
@@ -59,10 +71,7 @@ export default function SortModal({
         </div>
       </form>
 
-      <div className={styles.buttons}>
-        <button onClick={() => setShowModalContainer(false)}>Cancel</button>
-        <button onClick={sortTrucks}>Apply</button>
-      </div>
+      <button onClick={sortTrucks}>Apply</button>
     </div>
   );
 }

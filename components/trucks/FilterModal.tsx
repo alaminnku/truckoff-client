@@ -6,7 +6,7 @@ import { Dispatch, useState, ChangeEvent, SetStateAction } from "react";
 
 interface IFilterModalProps {
   setTrucks: Dispatch<SetStateAction<ITruck[]>>;
-  setShowModalContainer: Dispatch<SetStateAction<boolean>>;
+  setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function FilterModal({
@@ -131,7 +131,7 @@ export default function FilterModal({
     setTrucks(filteredTrucks);
 
     // Close the modal
-    setShowModalContainer(false);
+    setShowModalContainer && setShowModalContainer(false);
   }
 
   return (
@@ -272,10 +272,7 @@ export default function FilterModal({
         </form>
       </div>
 
-      <div className={styles.buttons}>
-        <button onClick={() => setShowModalContainer(false)}>Cancel</button>
-        <button onClick={filterTrucks}>Apply</button>
-      </div>
+      <button onClick={filterTrucks}>Apply</button>
     </div>
   );
 }

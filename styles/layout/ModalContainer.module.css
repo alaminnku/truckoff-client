@@ -40,7 +40,7 @@
 
 @media (min-width: 768px) {
   .modal_container {
+    width: 20rem;
     padding: 1.5rem;
-    width: fit-content;
   }
 }
