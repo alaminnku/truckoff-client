@@ -54,7 +54,7 @@ export default function Trucks() {
       />
 
       <ModalContainer
-        component={<SortModal />}
+        component={<SortModal trucks={trucks} />}
         showModalContainer={showSortModal}
         setShowModalContainer={setShowSortModal}
       />

@@ -45,6 +45,18 @@
   width: 48%;
 }
 
+.item {
+  margin-bottom: 0.5rem;
+}
+
+.item:last-child {
+  margin-bottom: 0rem;
+}
+
+.item input {
+  margin-right: 0.5rem;
+}
+
 .filter_modal button {
   border: none;
   cursor: pointer;
@@ -53,12 +65,4 @@
   padding: 12px 48px;
   color: var(--white);
   background: var(--chocolate);
-}
-
-.item {
-  margin-bottom: 0.5rem;
-}
-
-.item input {
-  margin-right: 0.5rem;
 }
