@@ -37,8 +37,8 @@ export default function Hero() {
         <form className={styles.search}>
           <input
             type="text"
-            placeholder="Search for trucks"
             value={search}
+            placeholder="Search for trucks"
             onChange={(e) => setSearch(e.target.value)}
           />
 
