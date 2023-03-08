@@ -6,7 +6,11 @@ import { Dispatch, SetStateAction, useState } from "react";
 interface ISortModalProps {
   trucks: ITruck[];
   setSorted?: Dispatch<
-    SetStateAction<{ byLowToHigh: boolean; byHighToLow: boolean }>
+    SetStateAction<{
+      byMostRecent: boolean;
+      byLowToHigh: boolean;
+      byHighToLow: boolean;
+    }>
   >;
   setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
 }
@@ -17,22 +21,31 @@ export default function SortModal({
   setShowModalContainer,
 }: ISortModalProps) {
   // Hooks
-  const [sortBy, setSortBy] = useState("lowToHigh");
+  const [sortBy, setSortBy] = useState("mostRecent");
 
   // Sort trucks by price
   function sortTrucks() {
-    if (sortBy === "lowToHigh") {
+    if (sortBy === "mostRecent") {
+      trucks.sort(
+        (a, b) =>
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+      );
+    } else if (sortBy === "lowToHigh") {
       trucks.sort((a, b) => +a.price - +b.price);
-    } else {
+    } else if (sortBy === "highToLow") {
       trucks.sort((a, b) => +b.price - +a.price);
     }
+
+    console.log(trucks);
 
     // Trigger state update
     setSorted &&
       setSorted(() =>
-        sortBy === "lowToHigh"
-          ? { byHighToLow: false, byLowToHigh: true }
-          : { byHighToLow: true, byLowToHigh: false }
+        sortBy === "mostRecent"
+          ? { byMostRecent: true, byHighToLow: false, byLowToHigh: false }
+          : sortBy === "lowToHigh"
+          ? { byLowToHigh: true, byMostRecent: false, byHighToLow: false }
+          : { byHighToLow: true, byMostRecent: false, byLowToHigh: false }
       );
 
     // Close the modal
@@ -46,6 +59,18 @@ export default function SortModal({
       </p>
 
       <form className={styles.sort_form}>
+        <div className={styles.item}>
+          <input
+            type="radio"
+            id="mostRecent"
+            name="sortTrucks"
+            value="mostRecent"
+            checked={sortBy === "mostRecent"}
+            onChange={(e) => setSortBy(e.target.value)}
+          />
+          <label htmlFor="mostRecent">Most recent</label>
+        </div>
+
         <div className={styles.item}>
           <input
             type="radio"

@@ -19,6 +19,7 @@ export const trucksData = [
     price: "138000",
     location: "Victoria",
     brand: "Isuzu",
+    createdAt: "2022-09-26T06:15:47.829+00:00",
   },
   {
     name: "2016 KENWORTH K200 FULL KW HISTORY 600 E5 SEE DETAILS $198000+GST K200",
@@ -40,6 +41,7 @@ export const trucksData = [
     price: "198000",
     location: "Queensland",
     brand: "Helfightliner",
+    createdAt: "2022-09-21T06:15:47.829+00:00",
   },
   {
     name: "2014 KENWORTH T359 6X4 289000KLM 12PALLET PLUS 10P TRAILER$POA SUIT NEW BYER T359 6X4 LWB E5 AUTO TAUNT TRAILER",
@@ -61,6 +63,7 @@ export const trucksData = [
     price: "68000",
     location: "New South Wales",
     brand: "Ford",
+    createdAt: "2022-09-24T06:15:47.829+00:00",
   },
   {
     name: "2014 KENWORTH T359 6X4 289000KLM 12PALLET PLUS 10P TRAILER$POA SUIT NEW BYER T359 6X4 LWB E5 AUTO TAUNT TRAILER",
@@ -82,6 +85,7 @@ export const trucksData = [
     price: "98000",
     location: "Victoria",
     brand: "Fuso",
+    createdAt: "2022-09-22T06:15:47.829+00:00",
   },
   {
     name: "2010 SCANIA R620 620 HP 796000 KLM 90T LIGHT USE $100000+GST SCANIA R620 SLEEPER",
@@ -103,5 +107,6 @@ export const trucksData = [
     price: "108000",
     location: "Western Australia",
     brand: "Hino",
+    createdAt: "2022-09-23T06:15:47.829+00:00",
   },
 ];

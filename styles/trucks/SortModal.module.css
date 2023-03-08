@@ -22,8 +22,12 @@
   flex-direction: column;
 }
 
-.item:first-child {
+.item {
   margin-bottom: 0.5rem;
+}
+
+.item:last-child {
+  margin-bottom: 0rem;
 }
 
 .item input,

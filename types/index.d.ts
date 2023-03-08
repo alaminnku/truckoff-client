@@ -24,6 +24,7 @@ export interface ITruck {
   price: string;
   location: string;
   brand: string;
+  createdAt: string;
 }
 
 interface IIsLoading {

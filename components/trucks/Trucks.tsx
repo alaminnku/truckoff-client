@@ -11,6 +11,7 @@ export default function Trucks() {
   // Hooks
   const { trucks, setTrucks } = useData();
   const [sorted, setSorted] = useState({
+    byMostRecent: false,
     byLowToHigh: false,
     byHighToLow: false,
   });
