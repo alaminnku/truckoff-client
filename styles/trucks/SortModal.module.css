@@ -11,21 +11,24 @@
   margin-right: 0.5rem;
 }
 
-.sort_list {
+.sort_form {
   margin-bottom: 1rem;
-}
-
-.sort_list form {
   display: flex;
   flex-direction: column;
 }
 
-.sort_list form div:first-child {
+.item:first-child {
   margin-bottom: 0.5rem;
 }
 
-.sort_list form div input {
+.item input {
   margin-right: 0.5rem;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .buttons button {
@@ -38,6 +41,10 @@
   background: var(--chocolate);
 }
 
-.buttons button:first-child {
+.buttons button:last-child {
   margin-right: 1rem;
+  padding: 10px 48px;
+  background: transparent;
+  color: var(--black);
+  border: 1px solid var(--chocolate);
 }

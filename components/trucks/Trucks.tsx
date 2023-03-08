@@ -48,13 +48,20 @@ export default function Trucks() {
       </div>
 
       <ModalContainer
-        component={<FilterModal setTrucks={setTrucks} />}
+        component={
+          <FilterModal
+            setTrucks={setTrucks}
+            setShowModalContainer={setShowSortModal}
+          />
+        }
         showModalContainer={showFilterModal}
         setShowModalContainer={setShowFilterModal}
       />
 
       <ModalContainer
-        component={<SortModal trucks={trucks} />}
+        component={
+          <SortModal trucks={trucks} setShowModalContainer={setShowSortModal} />
+        }
         showModalContainer={showSortModal}
         setShowModalContainer={setShowSortModal}
       />
