@@ -57,3 +57,10 @@
   border-radius: 0.25rem;
   background: var(--chocolate);
 }
+
+@media (min-width: 768px) {
+  .lead_form form {
+    width: 30rem;
+    margin: 0 auto;
+  }
+}
