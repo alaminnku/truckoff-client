@@ -11,7 +11,7 @@ export default function Hero() {
         <h1>Find your next truck</h1>
         <p>Australia’s fastest growing truck marketplace</p>
 
-        <form>
+        <form className={styles.search}>
           <input type="text" placeholder="Search for trucks" />
           <button>Search</button>
         </form>

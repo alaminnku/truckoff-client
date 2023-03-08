@@ -31,18 +31,18 @@
   margin-bottom: 1rem;
 }
 
-.content form {
-  width: 80%;
+.search {
+  width: 20rem;
   position: relative;
 }
 
-.content form input {
+.search input {
   width: 100%;
   padding: 14px 16px;
   border-radius: 2rem;
 }
 
-.content form button {
+.search button {
   right: 0;
   border: none;
   position: absolute;

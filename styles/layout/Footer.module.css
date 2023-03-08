@@ -44,8 +44,22 @@
   flex-direction: column;
 }
 
+.copyright,
+.navigation a,
+.navigation p {
+  font-size: 0.9rem;
+}
+
 .navigation a,
 .navigation p {
   padding: 4px;
   color: var(--white);
+}
+
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+  }
 }
