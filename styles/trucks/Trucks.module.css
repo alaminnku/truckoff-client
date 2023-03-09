@@ -57,14 +57,14 @@
   padding: 1rem;
 }
 
-.name_and_price {
+.location_and_price {
   display: flex;
   margin-bottom: 0.5rem;
   align-items: center;
   justify-content: space-between;
 }
 
-.name_and_price p {
+.location_and_price p {
   font-weight: 600;
   font-size: 1.25rem;
 }

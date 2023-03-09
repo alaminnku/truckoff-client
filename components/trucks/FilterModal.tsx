@@ -221,7 +221,7 @@ export default function FilterModal({
       </div>
 
       <div className={styles.filter}>
-        <p className={styles.title}>Locations</p>
+        <p className={styles.title}>Brands</p>
 
         <form className={styles.list}>
           <div className={styles.item}>

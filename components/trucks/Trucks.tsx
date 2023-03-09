@@ -46,8 +46,8 @@ export default function Trucks() {
                 />
 
                 <div className={styles.content}>
-                  <div className={styles.name_and_price}>
-                    <p>Truck name</p>
+                  <div className={styles.location_and_price}>
+                    <p>{truck.location}</p>
                     <p>${truck.price}</p>
                   </div>
 

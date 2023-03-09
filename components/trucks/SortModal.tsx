@@ -36,8 +36,6 @@ export default function SortModal({
       trucks.sort((a, b) => +b.price - +a.price);
     }
 
-    console.log(trucks);
-
     // Trigger state update
     setSorted &&
       setSorted(() =>
