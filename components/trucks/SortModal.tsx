@@ -53,7 +53,7 @@ export default function SortModal({
   return (
     <div className={styles.sort_modal}>
       <p className={styles.title}>
-        <BiSortAlt2 /> Sort options
+        <BiSortAlt2 /> Sort
       </p>
 
       <form className={styles.sort_form}>
