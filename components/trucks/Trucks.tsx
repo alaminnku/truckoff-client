@@ -23,10 +23,10 @@ export default function Trucks() {
       <h1>{trucks.length} trucks for sale in Australia</h1>
 
       <div className={styles.filter_and_trucks}>
-        <div className={styles.side_filter_and_sort}>
-          <FilterModal setTrucks={setTrucks} />
-
+        <div className={styles.side_sort_and_filter}>
           <SortModal trucks={trucks} setSorted={setSorted} />
+
+          <FilterModal setTrucks={setTrucks} />
         </div>
 
         <div>

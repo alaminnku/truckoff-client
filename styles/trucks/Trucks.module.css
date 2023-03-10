@@ -1,4 +1,4 @@
-.side_filter_and_sort {
+.side_sort_and_filter {
   display: none;
 }
 
@@ -89,7 +89,7 @@
 }
 
 @media (min-width: 1024px) {
-  .side_filter_and_sort {
+  .side_sort_and_filter {
     display: block;
   }
 

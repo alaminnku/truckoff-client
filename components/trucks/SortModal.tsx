@@ -1,7 +1,7 @@
 import { ITruck } from "@types";
 import { BiSortAlt2 } from "react-icons/bi";
 import styles from "@styles/trucks/SortModal.module.css";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 interface ISortModalProps {
   trucks: ITruck[];
@@ -23,8 +23,8 @@ export default function SortModal({
   // Hooks
   const [sortBy, setSortBy] = useState("mostRecent");
 
-  // Sort trucks by price
-  function sortTrucks() {
+  // Sort trucks
+  useEffect(() => {
     if (sortBy === "mostRecent") {
       trucks.sort(
         (a, b) =>
@@ -48,7 +48,7 @@ export default function SortModal({
 
     // Close the modal
     setShowModalContainer && setShowModalContainer(false);
-  }
+  }, [sortBy]);
 
   return (
     <div className={styles.sort_modal}>
@@ -57,44 +57,15 @@ export default function SortModal({
       </p>
 
       <form className={styles.sort_form}>
-        <div className={styles.item}>
-          <input
-            type="radio"
-            id="mostRecent"
-            name="sortTrucks"
-            value="mostRecent"
-            checked={sortBy === "mostRecent"}
-            onChange={(e) => setSortBy(e.target.value)}
-          />
-          <label htmlFor="mostRecent">Most recent</label>
-        </div>
-
-        <div className={styles.item}>
-          <input
-            type="radio"
-            id="lowToHigh"
-            name="sortTrucks"
-            value="lowToHigh"
-            checked={sortBy === "lowToHigh"}
-            onChange={(e) => setSortBy(e.target.value)}
-          />
-          <label htmlFor="lowToHigh">Low to high</label>
-        </div>
-
-        <div className={styles.item}>
-          <input
-            type="radio"
-            id="highToLow"
-            name="sortTrucks"
-            value="highToLow"
-            checked={sortBy === "highToLow"}
-            onChange={(e) => setSortBy(e.target.value)}
-          />
-          <label htmlFor="highToLow">High to low</label>
-        </div>
+        <select onChange={(e) => setSortBy(e.target.value)}>
+          <option value="Sort By" hidden>
+            Sort By
+          </option>
+          <option value="mostRecent">Most recent</option>
+          <option value="lowToHigh">Price: Low to high</option>
+          <option value="highToLow">Price: High to low</option>
+        </select>
       </form>
-
-      <button onClick={sortTrucks}>Apply</button>
     </div>
   );
 }
