@@ -1,9 +1,9 @@
 import { ITruck } from "@types";
 import { useData } from "@contexts/Data";
 import { FiFilter } from "react-icons/fi";
+import { brands, locations } from "@utils";
 import styles from "@styles/trucks/FilterModal.module.css";
 import { Dispatch, useState, ChangeEvent, SetStateAction } from "react";
-import { brands } from "@utils";
 
 interface IFilterModalProps {
   setTrucks: Dispatch<SetStateAction<ITruck[]>>;
@@ -22,11 +22,13 @@ export default function FilterModal({
   };
 
   const initialLocationState = {
-    victoria: false,
-    queensland: false,
-    newSouthWales: false,
-    southAustralia: false,
-    westernAustralia: false,
+    NSW: false,
+    VIC: false,
+    QLD: false,
+    WA: false,
+    SA: false,
+    NT: false,
+    TAS: false,
   };
 
   const initialBrandState = {
@@ -39,19 +41,20 @@ export default function FilterModal({
 
   // Hooks
   const { allTrucks } = useData();
-  const [truckData, setTruckData] = useState(initialTruckState);
-  const [brandData, setBrandData] = useState(initialBrandState);
-  const [locationData, setLocationData] = useState(initialLocationState);
+  const [truckData, setTruckData] = useState<{ [key: string]: string }>(
+    initialTruckState
+  );
+  const [brandData, setBrandData] = useState<{ [key: string]: boolean }>(
+    initialBrandState
+  );
+  const [locationData, setLocationData] = useState<{ [key: string]: boolean }>(
+    initialLocationState
+  );
 
   // Destructure data
   const { name, minPrice, maxPrice } = truckData;
-  const {
-    newSouthWales,
-    westernAustralia,
-    victoria,
-    southAustralia,
-    queensland,
-  } = locationData;
+  // const { WA, westernAustralia, VIC, southAustralia, QLD } =
+  //   locationData;
   const { ford, fuso, hino, isuzu, helfightliner } = brandData;
 
   // Change truck data
@@ -173,51 +176,17 @@ export default function FilterModal({
         <p className={styles.title}>Locations</p>
 
         <form className={styles.list}>
-          <div className={styles.item}>
-            <input
-              type="checkbox"
-              id="newSouthWales"
-              checked={newSouthWales}
-              onChange={changeLocationData}
-            />
-            <label htmlFor="newSouthWales">New South Wales</label>
-          </div>
-          <div className={styles.item}>
-            <input
-              type="checkbox"
-              id="westernAustralia"
-              checked={westernAustralia}
-              onChange={changeLocationData}
-            />
-            <label htmlFor="westernAustralia">Western Australia</label>
-          </div>
-          <div className={styles.item}>
-            <input
-              type="checkbox"
-              id="victoria"
-              checked={victoria}
-              onChange={changeLocationData}
-            />
-            <label htmlFor="victoria">Victoria</label>
-          </div>
-          <div className={styles.item}>
-            <input
-              type="checkbox"
-              id="southAustralia"
-              checked={southAustralia}
-              onChange={changeLocationData}
-            />
-            <label htmlFor="southAustralia">South Australia</label>
-          </div>
-          <div className={styles.item}>
-            <input
-              type="checkbox"
-              id="queensland"
-              checked={queensland}
-              onChange={changeLocationData}
-            />
-            <label htmlFor="queensland">Queensland</label>
-          </div>
+          {locations.map((location, index) => (
+            <div className={styles.item} key={index}>
+              <input
+                type="checkbox"
+                id={location[0]}
+                checked={locationData[location[0]]}
+                onChange={changeLocationData}
+              />
+              <label htmlFor={location[0]}>{location[1]}</label>
+            </div>
+          ))}
         </form>
       </div>
 

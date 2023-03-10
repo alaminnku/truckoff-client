@@ -1,7 +1,7 @@
 // Current year
 export const currentYear = new Date().getFullYear();
 
-// Brand array
+// Brands
 export const brands = [
   "Ford",
   "Freightliner",
@@ -16,6 +16,17 @@ export const brands = [
   "Toyota",
   "Volvo",
   "Western Star",
+];
+
+// Locations
+export const locations = [
+  ["NSW", "New South Wales"],
+  ["VIC", "Victoria"],
+  ["QLD", "Queensland"],
+  ["WA", "Western Australia"],
+  ["SA", "South Australia"],
+  ["NT", "Northern Territory"],
+  ["TAS", "Tasmania"],
 ];
 
 // Format price to us
