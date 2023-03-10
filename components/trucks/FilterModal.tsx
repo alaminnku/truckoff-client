@@ -3,6 +3,7 @@ import { useData } from "@contexts/Data";
 import { FiFilter } from "react-icons/fi";
 import styles from "@styles/trucks/FilterModal.module.css";
 import { Dispatch, useState, ChangeEvent, SetStateAction } from "react";
+import { brands } from "@utils";
 
 interface IFilterModalProps {
   setTrucks: Dispatch<SetStateAction<ITruck[]>>;
@@ -224,51 +225,17 @@ export default function FilterModal({
         <p className={styles.title}>Brands</p>
 
         <form className={styles.list}>
-          <div className={styles.item}>
-            <input
-              type="checkbox"
-              id="ford"
-              checked={ford}
-              onChange={changeBrandData}
-            />
-            <label htmlFor="ford">Ford</label>
-          </div>
-          <div className={styles.item}>
-            <input
-              type="checkbox"
-              id="helfightliner"
-              checked={helfightliner}
-              onChange={changeBrandData}
-            />
-            <label htmlFor="helfightliner">Helfightliner</label>
-          </div>
-          <div className={styles.item}>
-            <input
-              type="checkbox"
-              id="fuso"
-              checked={fuso}
-              onChange={changeBrandData}
-            />
-            <label htmlFor="fuso">Fuso</label>
-          </div>
-          <div className={styles.item}>
-            <input
-              type="checkbox"
-              id="hino"
-              checked={hino}
-              onChange={changeBrandData}
-            />
-            <label htmlFor="hino">Hino</label>
-          </div>
-          <div className={styles.item}>
-            <input
-              type="checkbox"
-              id="isuzu"
-              checked={isuzu}
-              onChange={changeBrandData}
-            />
-            <label htmlFor="isuzu">Isuzu</label>
-          </div>
+          {brands.map((brand, index) => (
+            <div className={styles.item} key={index}>
+              <input
+                type="checkbox"
+                id="ford"
+                checked={ford}
+                onChange={changeBrandData}
+              />
+              <label htmlFor="ford">{brand}</label>
+            </div>
+          ))}
         </form>
       </div>
 

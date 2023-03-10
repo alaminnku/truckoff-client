@@ -6,6 +6,7 @@ import FilterModal from "./FilterModal";
 import { useData } from "@contexts/Data";
 import styles from "@styles/trucks/Trucks.module.css";
 import ModalContainer from "@components/layout/ModalContainer";
+import { formatPrice } from "@utils";
 
 export default function Trucks() {
   // Hooks
@@ -48,7 +49,7 @@ export default function Trucks() {
                 <div className={styles.content}>
                   <div className={styles.location_and_price}>
                     <p>{truck.location}</p>
-                    <p>${truck.price}</p>
+                    <p>${formatPrice(truck.price)}</p>
                   </div>
 
                   <p className={styles.description}>{truck.name}</p>
