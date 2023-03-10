@@ -41,12 +41,12 @@ export default function Categories() {
         {isMobile
           ? brands.slice(0, 4).map((brand, index) => (
               <div className={styles.item} onClick={filterTrucks} key={index}>
-                <p>{brand}</p>
+                <p>{brand[1]}</p>
               </div>
             ))
           : brands.map((brand, index) => (
               <div className={styles.item} onClick={filterTrucks} key={index}>
-                <p>{brand}</p>
+                <p>{brand[1]}</p>
               </div>
             ))}
       </div>
