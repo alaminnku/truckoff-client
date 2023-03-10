@@ -10,7 +10,6 @@ export const brands = [
   ["isuzu", "Isuzu"],
   ["iveco", "Iveco"],
   ["kenworth", "Kenworth"],
-  ["mack", "Mack"],
   ["mercedesBenz", "Mercedes-Benz"],
   ["mitsubishi", "Mitsubishi"],
   ["toyota", "Toyota"],
