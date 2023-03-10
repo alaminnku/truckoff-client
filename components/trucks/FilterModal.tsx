@@ -36,7 +36,15 @@ export default function FilterModal({
     fuso: false,
     hino: false,
     isuzu: false,
-    helfightliner: false,
+    freightliner: false,
+    iveco: false,
+    kenworth: false,
+    mack: false,
+    mercedesBenz: false,
+    mitsubishi: false,
+    toyota: false,
+    volvo: false,
+    westernStar: false,
   };
 
   // Hooks
@@ -53,9 +61,6 @@ export default function FilterModal({
 
   // Destructure data
   const { name, minPrice, maxPrice } = truckData;
-  // const { WA, westernAustralia, VIC, southAustralia, QLD } =
-  //   locationData;
-  const { ford, fuso, hino, isuzu, helfightliner } = brandData;
 
   // Change truck data
   function changeTruckData(e: ChangeEvent<HTMLInputElement>) {
@@ -198,11 +203,11 @@ export default function FilterModal({
             <div className={styles.item} key={index}>
               <input
                 type="checkbox"
-                id="ford"
-                checked={ford}
+                id={brand[0]}
+                checked={brandData[brand[0]]}
                 onChange={changeBrandData}
               />
-              <label htmlFor="ford">{brand}</label>
+              <label htmlFor={brand[0]}>{brand[1]}</label>
             </div>
           ))}
         </form>

@@ -3,19 +3,19 @@ export const currentYear = new Date().getFullYear();
 
 // Brands
 export const brands = [
-  "Ford",
-  "Freightliner",
-  "Fuso",
-  "Hino",
-  "Isuzu",
-  "Iveco",
-  "Kenworth",
-  "Mack",
-  "Mercedes-Benz",
-  "Mitsubishi",
-  "Toyota",
-  "Volvo",
-  "Western Star",
+  ["ford", "Ford"],
+  ["freightliner", "Freightliner"],
+  ["fuso", "Fuso"],
+  ["hino", "Hino"],
+  ["isuzu", "Isuzu"],
+  ["iveco", "Iveco"],
+  ["kenworth", "Kenworth"],
+  ["mack", "Mack"],
+  ["mercedesBenz", "Mercedes-Benz"],
+  ["mitsubishi", "Mitsubishi"],
+  ["toyota", "Toyota"],
+  ["volvo", "Volvo"],
+  ["westernStar", "Western Star"],
 ];
 
 // Locations
