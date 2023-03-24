@@ -4,7 +4,7 @@ import styles from "@styles/trucks/SortModal.module.css";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 interface ISortModalProps {
-  trucks: ITruck[];
+  filteredTrucks: ITruck[];
   setSorted?: Dispatch<
     SetStateAction<{
       byMostRecent: boolean;
@@ -16,8 +16,8 @@ interface ISortModalProps {
 }
 
 export default function SortModal({
-  trucks,
   setSorted,
+  filteredTrucks,
   setShowModalContainer,
 }: ISortModalProps) {
   // Hooks
@@ -26,14 +26,14 @@ export default function SortModal({
   // Sort trucks
   useEffect(() => {
     if (sortBy === "mostRecent") {
-      trucks.sort(
+      filteredTrucks.sort(
         (a, b) =>
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
     } else if (sortBy === "lowToHigh") {
-      trucks.sort((a, b) => +a.price - +b.price);
+      filteredTrucks.sort((a, b) => +a.price - +b.price);
     } else if (sortBy === "highToLow") {
-      trucks.sort((a, b) => +b.price - +a.price);
+      filteredTrucks.sort((a, b) => +b.price - +a.price);
     }
 
     // Trigger state update

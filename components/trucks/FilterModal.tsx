@@ -6,12 +6,12 @@ import styles from "@styles/trucks/FilterModal.module.css";
 import { Dispatch, useState, ChangeEvent, SetStateAction } from "react";
 
 interface IFilterModalProps {
-  setTrucks: Dispatch<SetStateAction<ITruck[]>>;
+  setFilteredTrucks: Dispatch<SetStateAction<ITruck[]>>;
   setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function FilterModal({
-  setTrucks,
+  setFilteredTrucks,
   setShowModalContainer,
 }: IFilterModalProps) {
   // Initial states
@@ -48,7 +48,7 @@ export default function FilterModal({
   };
 
   // Hooks
-  const { allTrucks } = useData();
+  const { trucks } = useData();
   const [truckData, setTruckData] = useState<{ [key: string]: string }>(
     initialTruckState
   );
@@ -89,7 +89,7 @@ export default function FilterModal({
   // Filter trucks
   function filterTrucks() {
     // Create empty array
-    let filteredTrucks = allTrucks.data;
+    let filteredTrucks = trucks.data;
 
     // Create locations array
     const locations = Object.entries(locationData)
@@ -132,12 +132,12 @@ export default function FilterModal({
     // Filter by brands
     if (brands.length > 0) {
       filteredTrucks = filteredTrucks.filter((truck) =>
-        brands.includes(truck.brand.toLowerCase())
+        brands.includes(truck.make.toLowerCase())
       );
     }
 
     // Update state
-    setTrucks(filteredTrucks);
+    setFilteredTrucks(filteredTrucks);
 
     // Close the modal
     setShowModalContainer && setShowModalContainer(false);

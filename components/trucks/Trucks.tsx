@@ -1,16 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { ITruck } from "@types";
 import SortModal from "./SortModal";
 import FilterModal from "./FilterModal";
 import { useData } from "@contexts/Data";
+import { useEffect, useState } from "react";
 import styles from "@styles/trucks/Trucks.module.css";
 import ModalContainer from "@components/layout/ModalContainer";
 import { formatPrice } from "@utils";
 
 export default function Trucks() {
   // Hooks
-  const { trucks, setTrucks } = useData();
+  const { trucks } = useData();
   const [sorted, setSorted] = useState({
     byMostRecent: false,
     byLowToHigh: false,
@@ -18,16 +19,21 @@ export default function Trucks() {
   });
   const [showSortModal, setShowSortModal] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
+  const [filteredTrucks, setFilteredTrucks] = useState<ITruck[]>([]);
+
+  useEffect(() => {
+    setFilteredTrucks(trucks.data);
+  }, [trucks]);
 
   return (
     <section className={styles.trucks}>
-      <h1>{trucks.length} trucks for sale in Australia</h1>
+      <h1>{filteredTrucks.length} trucks for sale in Australia</h1>
 
       <div className={styles.filter_and_trucks}>
         <div className={styles.side_sort_and_filter}>
-          <SortModal trucks={trucks} setSorted={setSorted} />
+          <SortModal filteredTrucks={filteredTrucks} setSorted={setSorted} />
 
-          <FilterModal setTrucks={setTrucks} />
+          <FilterModal setFilteredTrucks={setFilteredTrucks} />
         </div>
 
         <div>
@@ -37,7 +43,7 @@ export default function Trucks() {
           </div>
 
           <div className={styles.items}>
-            {trucks.map((truck, index) => (
+            {filteredTrucks.map((truck, index) => (
               <div className={styles.item} key={index}>
                 <Image
                   src="/truckoff-hero.png"
@@ -65,7 +71,7 @@ export default function Trucks() {
       <ModalContainer
         component={
           <FilterModal
-            setTrucks={setTrucks}
+            setFilteredTrucks={setFilteredTrucks}
             setShowModalContainer={setShowFilterModal}
           />
         }
@@ -75,7 +81,10 @@ export default function Trucks() {
 
       <ModalContainer
         component={
-          <SortModal trucks={trucks} setShowModalContainer={setShowSortModal} />
+          <SortModal
+            filteredTrucks={filteredTrucks}
+            setShowModalContainer={setShowSortModal}
+          />
         }
         showModalContainer={showSortModal}
         setShowModalContainer={setShowSortModal}
