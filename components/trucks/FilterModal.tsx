@@ -27,8 +27,6 @@ export default function FilterModal({
     QLD: false,
     WA: false,
     SA: false,
-    NT: false,
-    TAS: false,
   };
 
   const initialBrandState = {
@@ -122,17 +120,19 @@ export default function FilterModal({
       );
     }
 
+    console.log(locations);
+
     // Filter by locations
     if (locations.length > 0) {
       filteredTrucks = filteredTrucks.filter((truck) =>
-        locations.includes(truck.location.split(" ").join("").toLowerCase())
+        locations.includes(truck.location?.toLowerCase())
       );
     }
 
     // Filter by brands
     if (brands.length > 0) {
       filteredTrucks = filteredTrucks.filter((truck) =>
-        brands.includes(truck.make.toLowerCase())
+        brands.includes(truck.make?.toLowerCase())
       );
     }
 

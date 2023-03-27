@@ -24,8 +24,6 @@ export const locations = [
   ["QLD", "Queensland"],
   ["WA", "Western Australia"],
   ["SA", "South Australia"],
-  ["NT", "Northern Territory"],
-  ["TAS", "Tasmania"],
 ];
 
 // Format price to us

@@ -28,5 +28,19 @@ export interface ITrucks extends IIsLoading {
 
 export interface IDataContext {
   trucks: ITrucks;
+  filteredTrucks: ITruck[];
   setTrucks: Dispatch<SetStateAction<ITrucks>>;
+  setFilteredTrucks: Dispatch<SetStateAction<ITruck[]>>;
+}
+
+export interface ISortModalProps {
+  filteredTrucks: ITruck[];
+  setSorted?: Dispatch<
+    SetStateAction<{
+      byMostRecent: boolean;
+      byLowToHigh: boolean;
+      byHighToLow: boolean;
+    }>
+  >;
+  setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
 }

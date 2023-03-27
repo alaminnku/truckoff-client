@@ -8,7 +8,7 @@ import styles from "@styles/home/Categories.module.css";
 export default function Categories() {
   // Hooks
   const router = useRouter();
-  const { allTrucks, setTrucks } = useData();
+  const { trucks, setFilteredTrucks } = useData();
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
@@ -23,9 +23,9 @@ export default function Categories() {
     const brandName = e.currentTarget.getElementsByTagName("p")[0].textContent;
 
     // Filter trucks
-    setTrucks(() =>
-      allTrucks.data.filter(
-        (truck) => truck.brand.toLowerCase() === brandName?.toLowerCase()
+    setFilteredTrucks(() =>
+      trucks.data.filter(
+        (truck) => truck.make.toLowerCase() === brandName?.toLowerCase()
       )
     );
 

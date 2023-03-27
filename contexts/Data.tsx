@@ -15,6 +15,7 @@ export default function DataProvider({ children }: IContextProviderProps) {
     data: [],
     isLoading: true,
   });
+  const [filteredTrucks, setFilteredTrucks] = useState<ITruck[]>([]);
 
   // Get all trucks
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function DataProvider({ children }: IContextProviderProps) {
         ).then((res) => res.json());
 
         // Update state
+        setFilteredTrucks(trucks);
         setTrucks({ isLoading: false, data: trucks });
       } catch (err) {
         // Log error
@@ -40,8 +42,12 @@ export default function DataProvider({ children }: IContextProviderProps) {
     getTrucks();
   }, []);
 
+  console.log(trucks);
+
   return (
-    <DataContext.Provider value={{ trucks, setTrucks }}>
+    <DataContext.Provider
+      value={{ trucks, setTrucks, filteredTrucks, setFilteredTrucks }}
+    >
       {children}
     </DataContext.Provider>
   );

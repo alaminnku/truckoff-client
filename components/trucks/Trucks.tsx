@@ -1,17 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ITruck } from "@types";
+import { useState } from "react";
 import SortModal from "./SortModal";
+import { formatPrice } from "@utils";
 import FilterModal from "./FilterModal";
 import { useData } from "@contexts/Data";
-import { useEffect, useState } from "react";
 import styles from "@styles/trucks/Trucks.module.css";
 import ModalContainer from "@components/layout/ModalContainer";
-import { formatPrice } from "@utils";
 
 export default function Trucks() {
   // Hooks
-  const { trucks } = useData();
+  const { filteredTrucks, setFilteredTrucks } = useData();
   const [sorted, setSorted] = useState({
     byMostRecent: false,
     byLowToHigh: false,
@@ -19,11 +18,6 @@ export default function Trucks() {
   });
   const [showSortModal, setShowSortModal] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
-  const [filteredTrucks, setFilteredTrucks] = useState<ITruck[]>([]);
-
-  useEffect(() => {
-    setFilteredTrucks(trucks.data);
-  }, [trucks]);
 
   return (
     <section className={styles.trucks}>

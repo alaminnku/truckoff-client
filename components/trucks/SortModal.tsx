@@ -1,19 +1,7 @@
-import { ITruck } from "@types";
+import { ISortModalProps, ITruck } from "@types";
 import { BiSortAlt2 } from "react-icons/bi";
 import styles from "@styles/trucks/SortModal.module.css";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-
-interface ISortModalProps {
-  filteredTrucks: ITruck[];
-  setSorted?: Dispatch<
-    SetStateAction<{
-      byMostRecent: boolean;
-      byLowToHigh: boolean;
-      byHighToLow: boolean;
-    }>
-  >;
-  setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
-}
 
 export default function SortModal({
   setSorted,

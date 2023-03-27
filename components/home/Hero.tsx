@@ -9,15 +9,15 @@ export default function Hero() {
   // Hooks
   const router = useRouter();
   const [search, setSearch] = useState("");
-  const { allTrucks, setTrucks } = useData();
+  const { trucks, setFilteredTrucks } = useData();
 
   // Search trucks
   function searchTrucks(e: FormEvent) {
     e.preventDefault();
 
     // Filter trucks
-    setTrucks(() =>
-      allTrucks.data.filter((truck) =>
+    setFilteredTrucks(() =>
+      trucks.data.filter((truck) =>
         truck.name.toLowerCase().includes(search.toLowerCase())
       )
     );
