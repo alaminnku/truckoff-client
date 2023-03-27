@@ -42,7 +42,7 @@ export default function Hero() {
             onChange={(e) => setSearch(e.target.value)}
           />
 
-          <button disabled={!search} onClick={searchTrucks}>
+          <button disabled={!search || trucks.isLoading} onClick={searchTrucks}>
             Search
           </button>
         </form>

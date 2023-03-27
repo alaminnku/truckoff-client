@@ -39,21 +39,39 @@ export default function Categories() {
     <section className={styles.categories}>
       <h2>Browse by make</h2>
 
-      <div className={styles.items}>
-        {isMobile
-          ? brands.slice(0, 4).map((brand, index) => (
-              <div className={styles.item} onClick={filterTrucks} key={index}>
-                <p>{brand[1]}</p>
-              </div>
-            ))
-          : brands.map((brand, index) => (
-              <div className={styles.item} onClick={filterTrucks} key={index}>
-                <p>{brand[1]}</p>
-              </div>
-            ))}
-      </div>
+      {trucks.isLoading && (
+        <div className={styles.loader}>
+          <h2>Loading...</h2>
+        </div>
+      )}
 
-      <Link href="/trucks">See More</Link>
+      {!trucks.isLoading && (
+        <>
+          <div className={styles.items}>
+            {isMobile
+              ? brands.slice(0, 4).map((brand, index) => (
+                  <div
+                    className={styles.item}
+                    onClick={filterTrucks}
+                    key={index}
+                  >
+                    <p>{brand[1]}</p>
+                  </div>
+                ))
+              : brands.map((brand, index) => (
+                  <div
+                    className={styles.item}
+                    onClick={filterTrucks}
+                    key={index}
+                  >
+                    <p>{brand[1]}</p>
+                  </div>
+                ))}
+          </div>
+
+          <Link href="/trucks">See More</Link>
+        </>
+      )}
     </section>
   );
 }
