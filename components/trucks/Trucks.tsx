@@ -40,7 +40,7 @@ export default function Trucks() {
             {filteredTrucks.map((truck, index) => (
               <div className={styles.item} key={index}>
                 <Image
-                  src="/truckoff-hero.png"
+                  src={truck.images[0]}
                   width={800}
                   height={500}
                   alt="Truck image"
