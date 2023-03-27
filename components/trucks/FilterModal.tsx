@@ -120,8 +120,6 @@ export default function FilterModal({
       );
     }
 
-    console.log(locations);
-
     // Filter by locations
     if (locations.length > 0) {
       filteredTrucks = filteredTrucks.filter((truck) =>

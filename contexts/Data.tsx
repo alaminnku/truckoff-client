@@ -42,11 +42,11 @@ export default function DataProvider({ children }: IContextProviderProps) {
     getTrucks();
   }, []);
 
-  console.log(
-    trucks.data
-      .map((truck) => truck.make)
-      .filter((brand, index, brands) => brands.indexOf(brand) === index)
-  );
+  // console.log(
+  //   trucks.data
+  //     .map((truck) => truck.make)
+  //     .filter((brand, index, brands) => brands.indexOf(brand) === index)
+  // );
 
   return (
     <DataContext.Provider

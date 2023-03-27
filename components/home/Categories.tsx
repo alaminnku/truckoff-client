@@ -25,7 +25,9 @@ export default function Categories() {
     // Filter trucks
     setFilteredTrucks(() =>
       trucks.data.filter(
-        (truck) => truck.make.toLowerCase() === brandName?.toLowerCase()
+        (truck) =>
+          truck.make?.toLowerCase() === brandName?.toLowerCase() ||
+          truck.name.toLowerCase().includes(brandName?.toLowerCase() as string)
       )
     );
 
