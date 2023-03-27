@@ -4,6 +4,7 @@ import { MouseEvent, useEffect, useState } from "react";
 import { useData } from "@contexts/Data";
 import { useRouter } from "next/router";
 import styles from "@styles/home/Categories.module.css";
+import SectionLoader from "@components/layout/SectionLoader";
 
 export default function Categories() {
   // Hooks
@@ -39,11 +40,7 @@ export default function Categories() {
     <section className={styles.categories}>
       <h2>Browse by make</h2>
 
-      {trucks.isLoading && (
-        <div className={styles.loader}>
-          <h2>Loading...</h2>
-        </div>
-      )}
+      {trucks.isLoading && <SectionLoader />}
 
       {!trucks.isLoading && (
         <>
