@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { locations } from "@utils";
 import { formatPrice } from "@utils";
 import SortTrucks from "./SortTrucks";
 import { ITrucksProps } from "@types";
@@ -39,7 +40,10 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
               : ""}{" "}
             trucks for sale in{" "}
             {filters.locations.length === 1
-              ? filters.locations[0]
+              ? locations.find(
+                  (location) =>
+                    location[0].toLowerCase() === filters.locations[0]
+                )![1]
               : "Australia"}
           </h1>
 
