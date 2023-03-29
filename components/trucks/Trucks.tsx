@@ -3,25 +3,20 @@ import Link from "next/link";
 import { useState } from "react";
 import { formatPrice } from "@utils";
 import SortTrucks from "./SortTrucks";
+import { ITrucksProps } from "@types";
 import FilterTrucks from "./FilterTrucks";
 import { useData } from "@contexts/Data";
 import styles from "@styles/trucks/Trucks.module.css";
 import SectionLoader from "@components/layout/SectionLoader";
 import ModalContainer from "@components/layout/ModalContainer";
-import { IFilters } from "@types";
 
-export default function Trucks() {
+export default function Trucks({ filters, setFilters }: ITrucksProps) {
   // Hooks
   const { trucks, filteredTrucks, setFilteredTrucks } = useData();
   const [sorted, setSorted] = useState({
     byMostRecent: false,
     byLowToHigh: false,
     byHighToLow: false,
-  });
-  const [filters, setFilters] = useState<IFilters>({
-    name: "",
-    brands: [],
-    locations: [],
   });
   const [showSortModal, setShowSortModal] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
@@ -38,10 +33,10 @@ export default function Trucks() {
         <>
           <h1>
             {filteredTrucks.length}{" "}
-            {filters.name && filters.brands.length === 0 && filters.name}
-            {!filters.name &&
-              filters.brands.length === 1 &&
-              filters.brands[0]}{" "}
+            {filters.name && filters.brands.length === 0 ? filters.name : ""}
+            {!filters.name && filters.brands.length === 1
+              ? filters.brands[0]
+              : ""}{" "}
             trucks for sale in{" "}
             {filters.locations.length === 1
               ? filters.locations[0]

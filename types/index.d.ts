@@ -57,3 +57,14 @@ export interface IFilterTrucksProps {
   setFilteredTrucks: Dispatch<SetStateAction<ITruck[]>>;
   setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
 }
+
+export interface ITrucksProps {
+  filters: IFilters;
+  setFilters: Dispatch<SetStateAction<IFilters>>;
+}
+
+export interface IHeadSectionProps {
+  title: string;
+  pageType: string;
+  ogTitle: string;
+}
