@@ -14,6 +14,7 @@ export interface ITruck {
   location: string;
   make: string;
   model: string;
+  origin: string;
   images: string[];
   createdAt: string;
 }

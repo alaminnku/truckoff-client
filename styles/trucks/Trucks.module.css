@@ -35,7 +35,7 @@
 .items {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .item {
@@ -90,6 +90,12 @@
   background: var(--chocolate);
 }
 
+@media (min-width: 768px) {
+  .items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (min-width: 1024px) {
   .side_sort_and_filter {
     display: block;
@@ -101,5 +107,9 @@
 
   .filter_and_trucks {
     display: flex;
+  }
+
+  .items {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

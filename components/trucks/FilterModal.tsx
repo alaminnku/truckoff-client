@@ -3,7 +3,13 @@ import { useData } from "@contexts/Data";
 import { FiFilter } from "react-icons/fi";
 import { brands, locations } from "@utils";
 import styles from "@styles/trucks/FilterModal.module.css";
-import { Dispatch, useState, ChangeEvent, SetStateAction } from "react";
+import {
+  Dispatch,
+  useState,
+  ChangeEvent,
+  SetStateAction,
+  FormEvent,
+} from "react";
 
 interface IFilterModalProps {
   setFilteredTrucks: Dispatch<SetStateAction<ITruck[]>>;
@@ -85,7 +91,9 @@ export default function FilterModal({
   }
 
   // Filter trucks
-  function filterTrucks() {
+  function filterTrucks(e: FormEvent) {
+    e.preventDefault();
+
     // Create empty array
     let filteredTrucks = trucks.data;
 
@@ -148,7 +156,7 @@ export default function FilterModal({
           <FiFilter /> Filters
         </p>
 
-        <form className={styles.name_and_price}>
+        <form onSubmit={filterTrucks} className={styles.name_and_price}>
           <input
             type="text"
             value={name}
@@ -172,6 +180,8 @@ export default function FilterModal({
               onChange={changeTruckData}
             />
           </div>
+
+          <input type="submit" hidden />
         </form>
       </div>
 

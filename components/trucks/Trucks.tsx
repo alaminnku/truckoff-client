@@ -66,7 +66,14 @@ export default function Trucks() {
 
                       <p className={styles.description}>{truck.name}</p>
 
-                      <Link href="/view-truck">View Truck</Link>
+                      <Link
+                        href="/view-truck"
+                        onClick={() =>
+                          localStorage.setItem("origin", truck.origin)
+                        }
+                      >
+                        View Truck
+                      </Link>
                     </div>
                   </div>
                 ))}
