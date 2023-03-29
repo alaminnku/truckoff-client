@@ -1,5 +1,6 @@
+import { useRouter } from "next/router";
 import styles from "@styles/lead/LeadForm.module.css";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 export default function LeadForm() {
   // Initial state
@@ -12,10 +13,13 @@ export default function LeadForm() {
   };
 
   // Hooks
+  const router = useRouter();
   const [formData, setFormData] = useState(initialState);
 
+  // Destructure data
   const { name, phone, email, business, isBusinessOwner } = formData;
 
+  // Handle change
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const target = e.target;
 
@@ -26,7 +30,37 @@ export default function LeadForm() {
     }));
   }
 
-  console.log(formData);
+  // Create user
+  async function createUser(e: FormEvent) {
+    e.preventDefault();
+
+    try {
+      // Make request to the backed
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      ).then((res) => res.json());
+
+      if (response.status === "success") {
+        // Push to the trucks page
+        router.push("/trucks");
+
+        // Open the truck in new tab
+        window.open(localStorage.getItem("origin") as string, "_blank");
+
+        // Remove item from local storage
+        localStorage.removeItem("origin");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <section className={styles.lead_form}>
@@ -35,7 +69,7 @@ export default function LeadForm() {
         <p>Rates starting from x.xx%</p>
       </div>
 
-      <form>
+      <form onSubmit={createUser}>
         <input
           id="name"
           type="text"
@@ -79,9 +113,9 @@ export default function LeadForm() {
             onChange={handleChange}
           />
         )}
-      </form>
 
-      <button>Create Account</button>
+        <input type="submit" />
+      </form>
     </section>
   );
 }
