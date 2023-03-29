@@ -51,12 +51,19 @@ export default function Trucks() {
               <div className={styles.items}>
                 {filteredTrucks.map((truck, index) => (
                   <div className={styles.item} key={index}>
-                    <Image
-                      src={truck.images[0]}
-                      width={800}
-                      height={500}
-                      alt="Truck image"
-                    />
+                    <Link
+                      href="/view-truck"
+                      onClick={() =>
+                        localStorage.setItem("origin", truck.origin)
+                      }
+                    >
+                      <Image
+                        src={truck.images[0]}
+                        width={800}
+                        height={500}
+                        alt="Truck image"
+                      />
+                    </Link>
 
                     <div className={styles.content}>
                       <div className={styles.location_and_price}>
@@ -67,6 +74,7 @@ export default function Trucks() {
                       <p className={styles.description}>{truck.name}</p>
 
                       <Link
+                        className={styles.view_truck_button}
                         href="/view-truck"
                         onClick={() =>
                           localStorage.setItem("origin", truck.origin)
