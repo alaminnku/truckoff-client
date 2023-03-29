@@ -1,25 +1,15 @@
-import { ITruck } from "@types";
 import { useData } from "@contexts/Data";
 import { FiFilter } from "react-icons/fi";
 import { brands, locations } from "@utils";
-import styles from "@styles/trucks/FilterModal.module.css";
-import {
-  Dispatch,
-  useState,
-  ChangeEvent,
-  SetStateAction,
-  FormEvent,
-} from "react";
+import { IFilterTrucksProps } from "@types";
+import { useState, ChangeEvent, FormEvent } from "react";
+import styles from "@styles/trucks/FilterTrucks.module.css";
 
-interface IFilterModalProps {
-  setFilteredTrucks: Dispatch<SetStateAction<ITruck[]>>;
-  setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
-}
-
-export default function FilterModal({
+export default function FilterTrucks({
+  setFilters,
   setFilteredTrucks,
   setShowModalContainer,
-}: IFilterModalProps) {
+}: IFilterTrucksProps) {
   // Initial states
   const initialTruckState = {
     name: "",
@@ -109,9 +99,13 @@ export default function FilterModal({
 
     // Filter by name
     if (name) {
+      setFilters((currState) => ({ ...currState, name }));
+
       filteredTrucks = filteredTrucks.filter((truck) =>
         truck.name.toLowerCase().includes(name.toLowerCase())
       );
+    } else {
+      setFilters((currState) => ({ ...currState, name: "" }));
     }
 
     // Filter by minimum price
@@ -130,16 +124,24 @@ export default function FilterModal({
 
     // Filter by locations
     if (locations.length > 0) {
+      setFilters((currState) => ({ ...currState, locations }));
+
       filteredTrucks = filteredTrucks.filter((truck) =>
         locations.includes(truck.location?.toLowerCase())
       );
+    } else {
+      setFilters((currState) => ({ ...currState, locations: [] }));
     }
 
     // Filter by brands
     if (brands.length > 0) {
+      setFilters((currState) => ({ ...currState, brands }));
+
       filteredTrucks = filteredTrucks.filter((truck) =>
         brands.includes(truck.make?.toLowerCase())
       );
+    } else {
+      setFilters((currState) => ({ ...currState, brands: [] }));
     }
 
     // Update state
@@ -150,7 +152,7 @@ export default function FilterModal({
   }
 
   return (
-    <div className={styles.filter_modal}>
+    <div className={styles.filter_trucks}>
       <div className={styles.filter}>
         <p className={styles.title}>
           <FiFilter /> Filters

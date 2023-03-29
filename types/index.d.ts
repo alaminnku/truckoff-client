@@ -34,7 +34,7 @@ export interface IDataContext {
   setFilteredTrucks: Dispatch<SetStateAction<ITruck[]>>;
 }
 
-export interface ISortModalProps {
+export interface ISortTrucksProps {
   filteredTrucks: ITruck[];
   setSorted?: Dispatch<
     SetStateAction<{
@@ -43,5 +43,17 @@ export interface ISortModalProps {
       byHighToLow: boolean;
     }>
   >;
+  setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface IFilters {
+  name: string;
+  brands: string[];
+  locations: string[];
+}
+
+export interface IFilterTrucksProps {
+  setFilters: Dispatch<SetStateAction<IFilters>>;
+  setFilteredTrucks: Dispatch<SetStateAction<ITruck[]>>;
   setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
 }

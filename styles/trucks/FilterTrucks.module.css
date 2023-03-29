@@ -1,4 +1,4 @@
-.filter_modal {
+.filter_trucks {
   display: flex;
   flex-direction: column;
 }
@@ -62,7 +62,7 @@
   margin-right: 0.5rem;
 }
 
-.filter_modal button {
+.filter_trucks button {
   border: none;
   cursor: pointer;
   font-size: 1rem;
@@ -73,7 +73,7 @@
 }
 
 @media (min-width: 1024px) {
-  .filter_modal {
+  .filter_trucks {
     width: 15rem;
     margin-right: 1rem;
   }

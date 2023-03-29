@@ -1,4 +1,4 @@
-.sort_modal {
+.sort_trucks {
   display: flex;
   flex-direction: column;
 }
@@ -29,7 +29,7 @@
 }
 
 @media (min-width: 1024px) {
-  .sort_modal {
+  .sort_trucks {
     margin-right: 1rem;
     margin-bottom: 1rem;
   }

@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import SortModal from "./SortModal";
 import { formatPrice } from "@utils";
-import FilterModal from "./FilterModal";
+import SortTrucks from "./SortTrucks";
+import FilterTrucks from "./FilterTrucks";
 import { useData } from "@contexts/Data";
 import styles from "@styles/trucks/Trucks.module.css";
 import SectionLoader from "@components/layout/SectionLoader";
 import ModalContainer from "@components/layout/ModalContainer";
+import { IFilters } from "@types";
 
 export default function Trucks() {
   // Hooks
@@ -16,6 +17,11 @@ export default function Trucks() {
     byMostRecent: false,
     byLowToHigh: false,
     byHighToLow: false,
+  });
+  const [filters, setFilters] = useState<IFilters>({
+    name: "",
+    brands: [],
+    locations: [],
   });
   const [showSortModal, setShowSortModal] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
@@ -30,16 +36,29 @@ export default function Trucks() {
 
       {!trucks.isLoading && trucks.data.length > 0 && (
         <>
-          <h1>{filteredTrucks.length} trucks for sale in Australia</h1>
+          <h1>
+            {filteredTrucks.length}{" "}
+            {filters.name && filters.brands.length === 0 && filters.name}
+            {!filters.name &&
+              filters.brands.length === 1 &&
+              filters.brands[0]}{" "}
+            trucks for sale in{" "}
+            {filters.locations.length === 1
+              ? filters.locations[0]
+              : "Australia"}
+          </h1>
 
           <div className={styles.filter_and_trucks}>
             <div className={styles.side_sort_and_filter}>
-              <SortModal
+              <SortTrucks
                 filteredTrucks={filteredTrucks}
                 setSorted={setSorted}
               />
 
-              <FilterModal setFilteredTrucks={setFilteredTrucks} />
+              <FilterTrucks
+                setFilters={setFilters}
+                setFilteredTrucks={setFilteredTrucks}
+              />
             </div>
 
             <div>
@@ -93,7 +112,8 @@ export default function Trucks() {
 
       <ModalContainer
         component={
-          <FilterModal
+          <FilterTrucks
+            setFilters={setFilters}
             setFilteredTrucks={setFilteredTrucks}
             setShowModalContainer={setShowFilterModal}
           />
@@ -104,7 +124,7 @@ export default function Trucks() {
 
       <ModalContainer
         component={
-          <SortModal
+          <SortTrucks
             filteredTrucks={filteredTrucks}
             setShowModalContainer={setShowSortModal}
           />
