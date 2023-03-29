@@ -15,6 +15,7 @@ export default function LeadForm() {
   // Hooks
   const router = useRouter();
   const [formData, setFormData] = useState(initialState);
+  const [isCreatingUser, setIsCreatingUser] = useState(false);
 
   // Destructure data
   const { name, phone, email, business, isBusinessOwner } = formData;
@@ -35,6 +36,9 @@ export default function LeadForm() {
     e.preventDefault();
 
     try {
+      // Show loader
+      setIsCreatingUser(true);
+
       // Make request to the backed
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/users/create`,
@@ -59,6 +63,9 @@ export default function LeadForm() {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      // Remove loader
+      setIsCreatingUser(false);
     }
   }
 
@@ -114,7 +121,7 @@ export default function LeadForm() {
           />
         )}
 
-        <input type="submit" />
+        <input type="submit" value={isCreatingUser ? "Loading..." : "Submit"} />
       </form>
     </section>
   );
