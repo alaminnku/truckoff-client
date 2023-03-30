@@ -27,18 +27,18 @@ export default function FilterTrucks({
 
   const initialBrandState = {
     ford: false,
+    mack: false,
     fuso: false,
     hino: false,
     isuzu: false,
-    freightliner: false,
     iveco: false,
-    kenworth: false,
-    mack: false,
-    mercedesBenz: false,
-    mitsubishi: false,
-    toyota: false,
     volvo: false,
-    westernStar: false,
+    toyota: false,
+    western: false,
+    kenworth: false,
+    mercedes: false,
+    mitsubishi: false,
+    freightliner: false,
   };
 
   // Hooks
@@ -138,7 +138,11 @@ export default function FilterTrucks({
       setFilters((currState) => ({ ...currState, brands }));
 
       filteredTrucks = filteredTrucks.filter((truck) =>
-        brands.includes(truck.make?.toLowerCase())
+        brands.some(
+          (brand) =>
+            brand === truck.make?.toLowerCase() ||
+            truck.name.toLowerCase().includes(brand)
+        )
       );
     } else {
       setFilters((currState) => ({ ...currState, brands: [] }));

@@ -4,26 +4,26 @@ export const currentYear = new Date().getFullYear();
 // Brands
 export const brands = [
   ["ford", "Ford"],
-  ["freightliner", "Freightliner"],
   ["fuso", "Fuso"],
   ["hino", "Hino"],
+  ["volvo", "Volvo"],
   ["isuzu", "Isuzu"],
   ["iveco", "Iveco"],
-  ["kenworth", "Kenworth"],
-  ["mercedesBenz", "Mercedes-Benz"],
-  ["mitsubishi", "Mitsubishi"],
   ["toyota", "Toyota"],
-  ["volvo", "Volvo"],
-  ["westernStar", "Western Star"],
+  ["kenworth", "Kenworth"],
+  ["western", "Western Star"],
+  ["mitsubishi", "Mitsubishi"],
+  ["mercedes", "Mercedes-Benz"],
+  ["freightliner", "Freightliner"],
 ];
 
 // Locations
 export const locations = [
-  ["NSW", "New South Wales"],
   ["VIC", "Victoria"],
   ["QLD", "Queensland"],
-  ["WA", "Western Australia"],
   ["SA", "South Australia"],
+  ["NSW", "New South Wales"],
+  ["WA", "Western Australia"],
 ];
 
 // Format price to us
