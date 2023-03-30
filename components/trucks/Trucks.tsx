@@ -50,8 +50,8 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
           <div className={styles.filter_and_trucks}>
             <div className={styles.side_sort_and_filter}>
               <SortTrucks
-                filteredTrucks={filteredTrucks}
                 setSorted={setSorted}
+                filteredTrucks={filteredTrucks}
               />
 
               <FilterTrucks

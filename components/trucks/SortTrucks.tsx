@@ -2,6 +2,7 @@ import { ISortTrucksProps } from "@types";
 import { BiSortAlt2 } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import styles from "@styles/trucks/SortTrucks.module.css";
+import { useData } from "@contexts/Data";
 
 export default function SortTrucks({
   setSorted,
@@ -9,7 +10,7 @@ export default function SortTrucks({
   setShowModalContainer,
 }: ISortTrucksProps) {
   // Hooks
-  const [sortBy, setSortBy] = useState("mostRecent");
+  const [sortBy, setSortBy] = useState("");
 
   // Sort trucks
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function SortTrucks({
 
     // Close the modal
     setShowModalContainer && setShowModalContainer(false);
-  }, [sortBy]);
+  }, [sortBy, filteredTrucks]);
 
   return (
     <div className={styles.sort_trucks}>
