@@ -1,9 +1,7 @@
 .header {
-  position: sticky;
+  top: 35px;
   z-index: 11;
-  top: 0;
   width: 100%;
-  padding: 14px 24px;
-  background: var(--chocolate);
-  backdrop-filter: saturate(180%) blur(0.5rem);
+  padding: 0px 20px;
+  position: absolute;
 }

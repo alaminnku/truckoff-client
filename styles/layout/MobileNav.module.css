@@ -5,27 +5,16 @@
 }
 
 .logo a {
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 700;
+  font-size: 24px;
   color: var(--yellow);
 }
 
 .hamburger {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
-}
-
-.line {
-  width: 1.25rem;
-  height: 1.5px;
-  border-radius: 0.5rem;
-  background: var(--yellow);
   transition: all 0.25s ease-in-out;
 }
 
@@ -33,23 +22,19 @@
 .line::after {
   content: "";
   position: absolute;
-  width: 1.25rem;
-  height: 1.5px;
-  border-radius: 0.5rem;
+  width: 21px;
+  height: 2px;
+  right: 20px;
   background: var(--yellow);
   transition: all 0.25s ease-in-out;
 }
 
 .line::before {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
 }
 
 .line::after {
-  transform: translateY(6px);
-}
-
-.hamburger.open .line {
-  background: transparent;
+  transform: translateY(5px);
 }
 
 .hamburger.open .line::before {
