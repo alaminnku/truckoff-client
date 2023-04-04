@@ -3,7 +3,7 @@ import styles from "@styles/home/Stats.module.css";
 export default function Stats() {
   return (
     <section className={styles.stats}>
-      <div className={styles.content}>
+      <div className={styles.items}>
         <div className={styles.item}>
           <p>5,000+</p>
           <p>Trucks each month</p>

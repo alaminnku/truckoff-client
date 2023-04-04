@@ -32,7 +32,7 @@
 
 .about {
   font-size: 14px;
-  color: #b3b5ac;
+  color: var(--gray);
   margin-bottom: 24px;
 }
 
@@ -61,7 +61,7 @@
 .navigation p {
   font-size: 18px;
   padding: 16px;
-  color: #b3b5ac;
+  color: var(--gray);
 }
 
 .copyright span {
@@ -76,6 +76,5 @@
   .footer {
     flex-direction: row;
     text-align: left;
-    justify-content: space-between;
   }
 }
