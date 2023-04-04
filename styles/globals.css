@@ -48,7 +48,8 @@
   --disable_font: #cccccc;
   --almost_white: #fafafa;
   --border_color: #eaeaea;
-  --section_padding: 1rem;
+  --almost_black: #101010;
+  --section_padding: 60px 20px;
 }
 
 *,

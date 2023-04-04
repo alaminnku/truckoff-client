@@ -1,7 +1,6 @@
 .hero {
-  position: relative;
   min-height: 100vh;
-  padding: var(--section_padding);
+  position: relative;
 }
 
 .hero img {

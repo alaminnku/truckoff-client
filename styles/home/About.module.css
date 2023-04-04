@@ -1,0 +1,26 @@
+.about {
+  text-align: center;
+  padding: var(--section_padding);
+}
+
+.title {
+  position: relative;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.color {
+  width: 172px;
+  height: 21px;
+  position: absolute;
+  right: 3rem;
+  bottom: -0.25rem;
+  z-index: -1;
+  background: var(--yellow);
+}
+
+.about p {
+  font-size: 14px;
+  color: var(--almost_black);
+}
