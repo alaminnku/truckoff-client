@@ -67,3 +67,22 @@
 .search button {
   font-size: 24px;
 }
+
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 60vh;
+  }
+  .content h1 {
+    font-size: 62px;
+    margin-bottom: 14px;
+  }
+
+  .search {
+    width: 80%;
+    margin-bottom: 17px;
+  }
+
+  .content p {
+    font-size: 20px;
+  }
+}
