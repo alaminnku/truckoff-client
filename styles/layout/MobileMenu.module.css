@@ -2,10 +2,10 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  top: 56px;
+  top: 0;
   left: -150%;
   z-index: 11;
-  padding: 1rem;
+  padding: 35px 20px;
   display: flex;
   transition: all 200ms;
   background: var(--white);

@@ -6,6 +6,7 @@ import { BiGroup } from "react-icons/bi";
 import { BsTruck } from "react-icons/bs";
 import { AiOutlineHome } from "react-icons/ai";
 import styles from "@styles/layout/MobileMenu.module.css";
+import MobileNav from "./MobileNav";
 
 interface IMobileMenuProps {
   isOpen: boolean;
@@ -26,31 +27,35 @@ export default function MobileMenu({ isOpen, setIsOpen }: IMobileMenuProps) {
 
   return (
     <div className={`${styles.mobile_menu} ${isOpen && styles.open}`}>
-      <ul className={styles.nav_items}>
-        <li onClick={() => setIsOpen(false)}>
-          <Link href="/">
-            <AiOutlineHome /> Home
-          </Link>
-        </li>
+      <div>
+        <MobileNav isOpen={isOpen} setIsOpen={setIsOpen} />
 
-        <li onClick={() => setIsOpen(false)}>
-          <Link href="/trucks">
-            <BsTruck /> Trucks
-          </Link>
-        </li>
+        <ul className={styles.nav_items}>
+          <li onClick={() => setIsOpen(false)}>
+            <Link href="/">
+              <AiOutlineHome /> Home
+            </Link>
+          </li>
 
-        <li onClick={() => setIsOpen(false)}>
-          <Link href="#">
-            <GrMoney /> Finance
-          </Link>
-        </li>
+          <li onClick={() => setIsOpen(false)}>
+            <Link href="/trucks">
+              <BsTruck /> Trucks
+            </Link>
+          </li>
 
-        <li onClick={() => setIsOpen(false)}>
-          <Link href="#">
-            <BiGroup /> About Us
-          </Link>
-        </li>
-      </ul>
+          <li onClick={() => setIsOpen(false)}>
+            <Link href="#">
+              <GrMoney /> Finance
+            </Link>
+          </li>
+
+          <li onClick={() => setIsOpen(false)}>
+            <Link href="#">
+              <BiGroup /> About Us
+            </Link>
+          </li>
+        </ul>
+      </div>
 
       <p className={styles.copyright}>
         &copy; {currentYear} TruckOff Pty Ltd. <br /> Sydney, Australia.
