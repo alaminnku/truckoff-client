@@ -5,6 +5,7 @@ import About from "@components/home/About";
 import Locations from "@components/home/Locations";
 import Processes from "@components/home/Processes";
 import Stats from "@components/home/Stats";
+import Promotion from "@components/home/Promotion";
 
 export default function HomePage() {
   return (
@@ -15,7 +16,7 @@ export default function HomePage() {
       <Locations />
       <Processes />
       <Stats />
-      <Categories />
+      <Promotion />
     </main>
   );
 }
