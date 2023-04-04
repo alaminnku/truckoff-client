@@ -3,7 +3,9 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { locations } from "@utils";
-import { useRef, useState } from "react";
+import { useData } from "@contexts/Data";
+import { useRouter } from "next/router";
+import { MouseEvent, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import styles from "@styles/home/Locations.module.css";
@@ -13,7 +15,21 @@ import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 export default function Locations() {
   // Hooks
   const swiperRef = useRef<SwiperType>();
+  const { trucks, setFilteredTrucks } = useData();
   const [slideIndex, setSlideIndex] = useState(0);
+
+  // Search trucks
+  function filterTrucks(
+    e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>,
+    location: string
+  ) {
+    // Filter trucks
+    setFilteredTrucks(() =>
+      trucks.data.filter(
+        (truck) => truck.location.toLowerCase() === location.toLowerCase()
+      )
+    );
+  }
 
   return (
     <section className={styles.locations}>
@@ -28,8 +44,8 @@ export default function Locations() {
         modules={[Navigation]}
       >
         <button
-          className={styles.prev_button}
           disabled={slideIndex === 0}
+          className={styles.prev_button}
           onClick={() => {
             swiperRef.current?.slidePrev();
             setSlideIndex(swiperRef.current?.activeIndex as number);
@@ -41,7 +57,10 @@ export default function Locations() {
         {locations.map((location, index) => (
           <SwiperSlide key={index}>
             <div className={styles.location}>
-              <Link href="/trucks">
+              <Link
+                href="/trucks"
+                onClick={(e) => filterTrucks(e, location[0])}
+              >
                 <Image
                   src="/truckoff-hero.png"
                   width={100}
