@@ -4,10 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { locations } from "@utils";
 import { useData } from "@contexts/Data";
-import { useRouter } from "next/router";
-import { MouseEvent, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { MouseEvent, useRef, useState } from "react";
 import styles from "@styles/home/Locations.module.css";
 import { Swiper as SwiperType, Navigation } from "swiper";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
@@ -43,16 +42,17 @@ export default function Locations() {
         }}
         modules={[Navigation]}
       >
-        <button
-          disabled={slideIndex === 0}
-          className={styles.prev_button}
-          onClick={() => {
-            swiperRef.current?.slidePrev();
-            setSlideIndex(swiperRef.current?.activeIndex as number);
-          }}
-        >
-          <RiArrowLeftSLine />
-        </button>
+        {!swiperRef.current?.isBeginning && (
+          <button
+            className={styles.prev_button}
+            onClick={() => {
+              swiperRef.current?.slidePrev();
+              setSlideIndex(swiperRef.current?.activeIndex as number);
+            }}
+          >
+            <RiArrowLeftSLine />
+          </button>
+        )}
 
         {locations.map((location, index) => (
           <SwiperSlide key={index}>
@@ -81,16 +81,17 @@ export default function Locations() {
           </SwiperSlide>
         ))}
 
-        <button
-          className={styles.next_button}
-          disabled={swiperRef.current?.isEnd}
-          onClick={() => {
-            swiperRef.current?.slideNext();
-            setSlideIndex(swiperRef.current?.activeIndex as number);
-          }}
-        >
-          <RiArrowRightSLine />
-        </button>
+        {!swiperRef.current?.isEnd && (
+          <button
+            className={styles.next_button}
+            onClick={() => {
+              swiperRef.current?.slideNext();
+              setSlideIndex(swiperRef.current?.activeIndex as number);
+            }}
+          >
+            <RiArrowRightSLine />
+          </button>
+        )}
       </Swiper>
     </section>
   );
