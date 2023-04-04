@@ -24,3 +24,27 @@
   font-size: 14px;
   color: var(--almost_black);
 }
+
+@media (min-width: 1024px) {
+  .about {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .title {
+    width: 50%;
+    font-size: 52px;
+  }
+
+  .color {
+    bottom: 0.5rem;
+    right: 6rem;
+  }
+
+  .about p {
+    width: 50%;
+    font-size: 16px;
+  }
+}

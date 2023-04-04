@@ -47,6 +47,7 @@
   --almost_white: #efefef;
   --almost_black: #101010;
   --section_padding: 30px 20px;
+  --large_section_padding: 120px 60px;
 }
 
 *,
@@ -106,6 +107,12 @@ textarea {
 textarea {
   resize: none;
   font-family: "Inter", sans-serif;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section_padding: 60px 120px;
+  }
 }
 
 @media (min-width: 1256px) {

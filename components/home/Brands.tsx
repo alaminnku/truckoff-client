@@ -2,17 +2,25 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import Image from "next/image";
 import { Autoplay } from "swiper";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "@styles/home/Swiper.module.css";
 
 export default function Brands() {
+  // Hooks
+  const [isMobile, setIsMobile] = useState(true);
+
+  // Check view port width
+  useEffect(() => {
+    window.innerWidth > 1024 && setIsMobile(false);
+  });
+
   return (
     <section>
-      Brands swapper
       <Swiper
         autoplay={true}
         spaceBetween={80}
-        slidesPerView={2.5}
+        slidesPerView={isMobile ? 2.5 : 6}
         modules={[Autoplay]}
         className={styles.swiper}
       >
