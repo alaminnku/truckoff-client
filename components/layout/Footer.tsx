@@ -55,10 +55,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <p className={styles.copyright}>
-        <span>Sydney, Australia.</span>
-        <span>&copy; {currentYear} TruckOff Pty Ltd.</span>
-      </p>
+      <div className={styles.copyright}>
+        <p>Sydney, Australia.</p>
+        <p>&copy; {currentYear} TruckOff Pty Ltd.</p>
+      </div>
     </footer>
   );
 }
