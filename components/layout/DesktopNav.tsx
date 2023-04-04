@@ -10,19 +10,18 @@ export default function DesktopNav() {
 
       <ul className={styles.navigation}>
         <li>
-          <Link href="/trucks">Trucks</Link>
-        </li>
-
-        <li>
-          <Link href="#">Finance</Link>
+          <Link href="/">Home</Link>
         </li>
 
         <li>
           <Link href="#">About Us</Link>
         </li>
+        <li>
+          <Link href="/trucks">Trucks</Link>
+        </li>
 
         <li>
-          <Link href="/">Home</Link>
+          <Link href="#">Finance</Link>
         </li>
       </ul>
     </nav>

@@ -2,7 +2,7 @@
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .desktop_nav {
     display: flex;
     align-items: center;
@@ -11,7 +11,7 @@
 
   .logo a {
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 24px;
     color: var(--yellow);
   }
 
@@ -22,8 +22,8 @@
 
   .navigation li a {
     opacity: 0.8;
-    font-size: 0.9rem;
-    color: var(--yellow);
-    padding: 0.5rem 1rem;
+    font-size: 18px;
+    color: var(--gray);
+    padding: 0.5rem 1.5rem;
   }
 }
