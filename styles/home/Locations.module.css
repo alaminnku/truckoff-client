@@ -51,19 +51,30 @@
   position: absolute;
   display: flex;
   align-items: center;
-  top: 40%;
-  z-index: 1;
+  top: 55%;
+  z-index: 11;
   border: none;
   padding: 10px;
+  cursor: pointer;
   border-radius: 100%;
   justify-content: center;
 }
 
 .next_button {
-  right: 1.5rem;
+  right: 2.5rem;
 }
 
 .next_button svg,
 .prev_button svg {
   font-size: 24px;
+}
+
+@media (min-width: 1024px) {
+  .next_button {
+    right: 100px;
+  }
+
+  .prev_button {
+    left: 100px;
+  }
 }

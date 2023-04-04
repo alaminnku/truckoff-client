@@ -6,7 +6,7 @@ import { locations } from "@utils";
 import { useData } from "@contexts/Data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { MouseEvent, useRef, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import styles from "@styles/home/Locations.module.css";
 import { Swiper as SwiperType, Navigation } from "swiper";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
@@ -16,12 +16,14 @@ export default function Locations() {
   const swiperRef = useRef<SwiperType>();
   const { trucks, setFilteredTrucks } = useData();
   const [slideIndex, setSlideIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    window.innerWidth > 768 && setIsMobile(false);
+  });
 
   // Search trucks
-  function filterTrucks(
-    e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>,
-    location: string
-  ) {
+  function filterTrucks(location: string) {
     // Filter trucks
     setFilteredTrucks(() =>
       trucks.data.filter(
@@ -34,33 +36,30 @@ export default function Locations() {
     <section className={styles.locations}>
       <p className={styles.title}>Explore by Location</p>
 
+      {!swiperRef.current?.isBeginning && (
+        <button
+          className={styles.prev_button}
+          onClick={() => {
+            swiperRef.current?.slidePrev();
+            setSlideIndex(swiperRef.current?.activeIndex as number);
+          }}
+        >
+          <RiArrowLeftSLine />
+        </button>
+      )}
+
       <Swiper
         spaceBetween={25}
-        slidesPerView={1.25}
+        slidesPerView={isMobile ? 1.25 : 3}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
         }}
         modules={[Navigation]}
       >
-        {!swiperRef.current?.isBeginning && (
-          <button
-            className={styles.prev_button}
-            onClick={() => {
-              swiperRef.current?.slidePrev();
-              setSlideIndex(swiperRef.current?.activeIndex as number);
-            }}
-          >
-            <RiArrowLeftSLine />
-          </button>
-        )}
-
         {locations.map((location, index) => (
           <SwiperSlide key={index}>
             <div className={styles.location}>
-              <Link
-                href="/trucks"
-                onClick={(e) => filterTrucks(e, location[0])}
-              >
+              <Link href="/trucks" onClick={() => filterTrucks(location[0])}>
                 <Image
                   src="/truckoff-hero.png"
                   width={100}
@@ -80,19 +79,19 @@ export default function Locations() {
             </div>
           </SwiperSlide>
         ))}
-
-        {!swiperRef.current?.isEnd && (
-          <button
-            className={styles.next_button}
-            onClick={() => {
-              swiperRef.current?.slideNext();
-              setSlideIndex(swiperRef.current?.activeIndex as number);
-            }}
-          >
-            <RiArrowRightSLine />
-          </button>
-        )}
       </Swiper>
+
+      {!swiperRef.current?.isEnd && (
+        <button
+          className={styles.next_button}
+          onClick={() => {
+            swiperRef.current?.slideNext();
+            setSlideIndex(swiperRef.current?.activeIndex as number);
+          }}
+        >
+          <RiArrowRightSLine />
+        </button>
+      )}
     </section>
   );
 }
