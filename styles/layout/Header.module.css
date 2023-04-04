@@ -1,7 +1,9 @@
 .header {
-  top: 35px;
+  position: sticky;
   z-index: 11;
+  top: 0;
   width: 100%;
-  padding: 0px 20px;
-  position: absolute;
+  padding: 35px 20px;
+  background: #101010;
+  backdrop-filter: saturate(180%) blur(0.5rem);
 }

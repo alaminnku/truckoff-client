@@ -27,35 +27,31 @@ export default function MobileMenu({ isOpen, setIsOpen }: IMobileMenuProps) {
 
   return (
     <div className={`${styles.mobile_menu} ${isOpen && styles.open}`}>
-      <div>
-        <MobileNav isOpen={isOpen} setIsOpen={setIsOpen} />
+      <ul className={styles.nav_items}>
+        <li onClick={() => setIsOpen(false)}>
+          <Link href="/">
+            <AiOutlineHome /> Home
+          </Link>
+        </li>
 
-        <ul className={styles.nav_items}>
-          <li onClick={() => setIsOpen(false)}>
-            <Link href="/">
-              <AiOutlineHome /> Home
-            </Link>
-          </li>
+        <li onClick={() => setIsOpen(false)}>
+          <Link href="/trucks">
+            <BsTruck /> Trucks
+          </Link>
+        </li>
 
-          <li onClick={() => setIsOpen(false)}>
-            <Link href="/trucks">
-              <BsTruck /> Trucks
-            </Link>
-          </li>
+        <li onClick={() => setIsOpen(false)}>
+          <Link href="#">
+            <GrMoney /> Finance
+          </Link>
+        </li>
 
-          <li onClick={() => setIsOpen(false)}>
-            <Link href="#">
-              <GrMoney /> Finance
-            </Link>
-          </li>
-
-          <li onClick={() => setIsOpen(false)}>
-            <Link href="#">
-              <BiGroup /> About Us
-            </Link>
-          </li>
-        </ul>
-      </div>
+        <li onClick={() => setIsOpen(false)}>
+          <Link href="#">
+            <BiGroup /> About Us
+          </Link>
+        </li>
+      </ul>
 
       <p className={styles.copyright}>
         &copy; {currentYear} TruckOff Pty Ltd. <br /> Sydney, Australia.

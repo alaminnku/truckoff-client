@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useData } from "@contexts/Data";
 import { FormEvent, useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 import heroImage from "@public/truckoff-hero.png";
 import styles from "@styles/home/Hero.module.css";
 
@@ -32,20 +33,21 @@ export default function Hero() {
 
       <div className={styles.content}>
         <h1>Find your next truck</h1>
-        <p>Australia’s fastest growing truck marketplace</p>
 
         <form className={styles.search}>
           <input
             type="text"
             value={search}
-            placeholder="Search for trucks"
+            placeholder="Search by keyword..."
             onChange={(e) => setSearch(e.target.value)}
           />
 
           <button disabled={!search || trucks.isLoading} onClick={searchTrucks}>
-            Search
+            <AiOutlineSearch />
           </button>
         </form>
+
+        <p>Australia’s fastest growing truck marketplace.</p>
       </div>
     </section>
   );
