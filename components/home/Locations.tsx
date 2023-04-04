@@ -19,7 +19,7 @@ export default function Locations() {
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
-    window.innerWidth > 768 && setIsMobile(false);
+    window.innerWidth > 1024 && setIsMobile(false);
   });
 
   // Search trucks

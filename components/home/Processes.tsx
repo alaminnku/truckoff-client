@@ -1,7 +1,7 @@
 import "swiper/css";
 import "swiper/css/navigation";
 import { processes } from "@utils";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "@styles/home/Processes.module.css";
 import { Swiper as SwiperType, Navigation } from "swiper";
@@ -12,6 +12,11 @@ export default function Processes() {
   // Hooks
   const swiperRef = useRef<SwiperType>();
   const [slideIndex, setSlideIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    window.innerWidth > 1024 && setIsMobile(false);
+  });
 
   return (
     <section className={styles.processes}>
@@ -19,13 +24,13 @@ export default function Processes() {
 
       <Swiper
         spaceBetween={25}
-        slidesPerView={1.25}
+        slidesPerView={isMobile ? 1.25 : 4}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
         }}
         modules={[Navigation]}
       >
-        {!swiperRef.current?.isBeginning && (
+        {!swiperRef.current?.isBeginning && isMobile && (
           <button
             className={styles.prev_button}
             onClick={() => {
@@ -49,7 +54,7 @@ export default function Processes() {
           </SwiperSlide>
         ))}
 
-        {!swiperRef.current?.isEnd && (
+        {!swiperRef.current?.isEnd && isMobile && (
           <button
             className={styles.next_button}
             onClick={() => {
