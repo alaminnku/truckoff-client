@@ -15,3 +15,20 @@
   height: 15rem;
   object-fit: cover;
 }
+
+@media (min-width: 1024px) {
+  .promotion {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .content {
+    width: 45%;
+  }
+
+  .promotion img {
+    width: 45%;
+  }
+}
