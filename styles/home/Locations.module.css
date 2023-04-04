@@ -1,0 +1,68 @@
+.locations {
+  /* position: relative; */
+  padding: var(--section_padding);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  font-family: "Roboto", sans-serif;
+}
+
+.location {
+  width: 100%;
+  border: 1px solid var(--almost_white);
+}
+
+.location img {
+  width: 100%;
+  height: 8rem;
+  object-fit: cover;
+}
+
+.content {
+  padding: 1rem 1.5rem;
+}
+
+.content p {
+  color: var(--almost_black);
+}
+
+.content p:first-child {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.content p:last-child {
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  align-items: center;
+}
+
+.content p:last-child svg {
+  margin-left: 20px;
+}
+
+.next_button,
+.prev_button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 40%;
+  z-index: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 100%;
+  justify-content: center;
+}
+
+.next_button {
+  right: 1.5rem;
+}
+
+.next_button svg,
+.prev_button svg {
+  font-size: 24px;
+}

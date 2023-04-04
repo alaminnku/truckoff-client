@@ -9,10 +9,10 @@ export default function Brands() {
   return (
     <section>
       Brands swapper
-      {/* <Swiper
+      <Swiper
         autoplay={true}
-        spaceBetween={175}
-        slidesPerView={4}
+        spaceBetween={80}
+        slidesPerView={2.5}
         modules={[Autoplay]}
         className={styles.swiper}
       >
@@ -34,7 +34,10 @@ export default function Brands() {
         <SwiperSlide>
           <Image src="/truckoff-hero.png" width={200} height={100} alt="test" />
         </SwiperSlide>
-      </Swiper> */}
+        <SwiperSlide>
+          <Image src="/truckoff-hero.png" width={200} height={100} alt="test" />
+        </SwiperSlide>
+      </Swiper>
     </section>
   );
 }

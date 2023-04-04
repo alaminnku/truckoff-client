@@ -39,17 +39,16 @@
 }
 
 :root {
-  --black: #000;
   --white: #fff;
   --gray: #666;
   --yellow: #e6fc5f;
   --dark_gray: #797979;
   --chocolate: #333333;
   --disable_font: #cccccc;
-  --almost_white: #fafafa;
+  --almost_white: #efefef;
   --border_color: #eaeaea;
   --almost_black: #101010;
-  --section_padding: 60px 20px;
+  --section_padding: 30px 20px;
 }
 
 *,
@@ -67,7 +66,7 @@ body {
   margin: 0 auto;
   font-size: 16px;
   font-weight: 400;
-  color: var(--black);
+  color: var(--almost_black);
   font-family: "Inter", sans-serif;
   text-rendering: optimizeLegibility;
 }
