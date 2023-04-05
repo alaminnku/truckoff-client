@@ -75,19 +75,22 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
                         localStorage.setItem("origin", truck.origin)
                       }
                     >
-                      <Image
-                        src={truck.images[0]}
-                        width={800}
-                        height={500}
-                        alt="Truck image"
-                      />
+                      <div className={styles.image}>
+                        <Image
+                          src={truck.images[0]}
+                          width={800}
+                          height={500}
+                          alt="Truck image"
+                        />
+
+                        <p className={styles.location}>{truck.location}</p>
+                      </div>
                     </Link>
 
                     <div className={styles.content}>
-                      <div className={styles.location_and_price}>
-                        <p>{truck.location}</p>
-                        <p>${formatPrice(truck.price)}</p>
-                      </div>
+                      <p className={styles.price}>
+                        ${formatPrice(truck.price)}
+                      </p>
 
                       <p className={styles.description}>{truck.name}</p>
 
