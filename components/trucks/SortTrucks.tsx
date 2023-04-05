@@ -2,7 +2,6 @@ import { ISortTrucksProps } from "@types";
 import { BiSortAlt2 } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import styles from "@styles/trucks/SortTrucks.module.css";
-import { useData } from "@contexts/Data";
 
 export default function SortTrucks({
   setSorted,
@@ -41,14 +40,12 @@ export default function SortTrucks({
 
   return (
     <div className={styles.sort_trucks}>
-      <p className={styles.title}>
-        <BiSortAlt2 /> Sort
-      </p>
+      <p className={styles.title}>Sort by</p>
 
       <form className={styles.sort_form}>
         <select onChange={(e) => setSortBy(e.target.value)}>
-          <option value="Sort By" hidden>
-            Sort By
+          <option value="Sort trucks by" hidden>
+            <span>Sort trucks by</span>
           </option>
           <option value="mostRecent">Most recent</option>
           <option value="lowToHigh">Price: Low to high</option>

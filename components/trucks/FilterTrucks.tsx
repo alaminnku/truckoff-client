@@ -158,35 +158,16 @@ export default function FilterTrucks({
   return (
     <div className={styles.filter_trucks}>
       <div className={styles.filter}>
-        <p className={styles.title}>
-          <FiFilter /> Filters
-        </p>
+        <p className={styles.title}>Filters</p>
 
-        <form onSubmit={filterTrucks} className={styles.name_and_price}>
+        <form onSubmit={filterTrucks} className={styles.name}>
           <input
             type="text"
             value={name}
             id="name"
-            placeholder="Name"
             onChange={changeTruckData}
+            placeholder="Search by keyword.."
           />
-          <div>
-            <input
-              type="text"
-              id="minPrice"
-              value={minPrice}
-              placeholder="Min Price"
-              onChange={changeTruckData}
-            />
-            <input
-              type="text"
-              id="maxPrice"
-              value={maxPrice}
-              placeholder="Max Price"
-              onChange={changeTruckData}
-            />
-          </div>
-
           <input type="submit" hidden />
         </form>
       </div>

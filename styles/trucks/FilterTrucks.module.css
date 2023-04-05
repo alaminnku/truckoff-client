@@ -12,45 +12,26 @@
 }
 
 .title {
-  display: flex;
-  font-weight: 600;
-  font-size: 18px;
-  align-items: center;
-  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-family: "Roboto", sans-serif;
 }
 
-.title svg {
-  margin-right: 0.5rem;
+.name {
+  margin-bottom: 28px;
 }
 
-.name_and_price {
-  display: flex;
-  flex-direction: column;
-}
-
-.name_and_price input {
-  padding: 10px;
-  border-radius: 0.25rem;
+.name input {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 8px;
   margin-bottom: 0.75rem;
-  border: 1px solid var(--border_color);
-}
-
-.name_and_price div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.name_and_price div input {
-  width: 48%;
+  border: 1px solid #c4c4c4;
 }
 
 .item {
-  margin-bottom: 0.5rem;
-}
-
-.item:last-child {
-  margin-bottom: 0rem;
+  margin-bottom: 14px;
 }
 
 .item input,
@@ -59,22 +40,26 @@
 }
 
 .item input {
-  margin-right: 0.5rem;
+  margin-right: 8px;
+}
+
+.item label {
+  font-size: 14px;
 }
 
 .filter_trucks button {
   border: none;
   cursor: pointer;
-  font-size: 1rem;
-  color: var(--white);
-  padding: 12px 48px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #344054;
+  padding: 8px 48px;
   border-radius: 0.25rem;
-  background: var(--chocolate);
+  background: #cee53f;
 }
 
 @media (min-width: 1024px) {
   .filter_trucks {
     width: 15rem;
-    margin-right: 1rem;
   }
 }
