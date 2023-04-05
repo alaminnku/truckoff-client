@@ -31,40 +31,39 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
       )}
 
       {!trucks.isLoading && trucks.data.length > 0 && (
-        <>
-          <h1>
-            {filteredTrucks.length}{" "}
-            {filters.name && filters.brands.length === 0 ? filters.name : ""}
-            {!filters.name && filters.brands.length === 1
-              ? filters.brands[0]
-              : ""}{" "}
-            trucks for sale in{" "}
-            {filters.locations.length === 1
-              ? locations.find(
-                  (location) =>
-                    location[0].toLowerCase() === filters.locations[0]
-                )![1]
-              : "Australia"}
-          </h1>
+        <div className={styles.filter_and_trucks}>
+          <div className={styles.side_sort_and_filter}>
+            <SortTrucks setSorted={setSorted} filteredTrucks={filteredTrucks} />
 
-          <div className={styles.filter_and_trucks}>
-            <div className={styles.side_sort_and_filter}>
-              <SortTrucks
-                setSorted={setSorted}
-                filteredTrucks={filteredTrucks}
-              />
+            <FilterTrucks
+              setFilters={setFilters}
+              setFilteredTrucks={setFilteredTrucks}
+            />
+          </div>
 
-              <FilterTrucks
-                setFilters={setFilters}
-                setFilteredTrucks={setFilteredTrucks}
-              />
+          <div>
+            <div className={styles.filter_and_sort}>
+              <p onClick={() => setShowFilterModal(true)}>Filter</p>
+              <p onClick={() => setShowSortModal(true)}>Sort</p>
             </div>
 
-            <div>
-              <div className={styles.filter_and_sort}>
-                <p onClick={() => setShowFilterModal(true)}>Filter</p>
-                <p onClick={() => setShowSortModal(true)}>Sort</p>
-              </div>
+            <>
+              <h1>
+                {filteredTrucks.length}{" "}
+                {filters.name && filters.brands.length === 0
+                  ? filters.name
+                  : ""}
+                {!filters.name && filters.brands.length === 1
+                  ? filters.brands[0]
+                  : ""}{" "}
+                trucks for sale in{" "}
+                {filters.locations.length === 1
+                  ? locations.find(
+                      (location) =>
+                        location[0].toLowerCase() === filters.locations[0]
+                    )![1]
+                  : "Australia"}
+              </h1>
 
               <div className={styles.items}>
                 {filteredTrucks.map((truck, index) => (
@@ -107,9 +106,9 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
                   </div>
                 ))}
               </div>
-            </div>
+            </>
           </div>
-        </>
+        </div>
       )}
 
       <ModalContainer

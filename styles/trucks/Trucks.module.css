@@ -7,9 +7,8 @@
 }
 
 .trucks h1 {
-  margin-bottom: 1rem;
-  text-align: center;
-  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 16px;
 }
 
 .filter_and_sort {
@@ -71,15 +70,6 @@
   flex-direction: column;
 }
 
-.location_and_price {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.25rem;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--chocolate);
-}
-
 .price {
   font-weight: 700;
   font-size: 18px;
@@ -110,6 +100,10 @@
 }
 
 @media (min-width: 1024px) {
+  .trucks h1 {
+    font-size: 28px;
+  }
+
   .side_sort_and_filter {
     display: block;
   }
