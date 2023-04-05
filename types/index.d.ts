@@ -54,8 +54,8 @@ export interface IFilters {
 
 export interface IFilterTrucksProps {
   setFilters: Dispatch<SetStateAction<IFilters>>;
+  setShowAllFilters?: Dispatch<SetStateAction<boolean>>;
   setFilteredTrucks: Dispatch<SetStateAction<ITruck[]>>;
-  setShowModalContainer?: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface ITrucksProps {

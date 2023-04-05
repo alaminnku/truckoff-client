@@ -1,5 +1,4 @@
 import { useData } from "@contexts/Data";
-import { FiFilter } from "react-icons/fi";
 import { brands, locations } from "@utils";
 import { IFilterTrucksProps } from "@types";
 import { useState, ChangeEvent, FormEvent } from "react";
@@ -8,7 +7,7 @@ import styles from "@styles/trucks/FilterTrucks.module.css";
 export default function FilterTrucks({
   setFilters,
   setFilteredTrucks,
-  setShowModalContainer,
+  setShowAllFilters,
 }: IFilterTrucksProps) {
   // Initial states
   const initialTruckState = {
@@ -151,8 +150,8 @@ export default function FilterTrucks({
     // Update state
     setFilteredTrucks(filteredTrucks);
 
-    // Close the modal
-    setShowModalContainer && setShowModalContainer(false);
+    // Close the UI
+    setShowAllFilters && setShowAllFilters(false);
   }
 
   return (

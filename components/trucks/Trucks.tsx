@@ -10,7 +10,6 @@ import { useData } from "@contexts/Data";
 import styles from "@styles/trucks/Trucks.module.css";
 import SectionLoader from "@components/layout/SectionLoader";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import ModalContainer from "@components/layout/ModalContainer";
 
 export default function Trucks({ filters, setFilters }: ITrucksProps) {
   // Hooks
@@ -70,6 +69,7 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
 
                 <FilterTrucks
                   setFilters={setFilters}
+                  setShowAllFilters={setShowAllFilters}
                   setFilteredTrucks={setFilteredTrucks}
                 />
               </div>
