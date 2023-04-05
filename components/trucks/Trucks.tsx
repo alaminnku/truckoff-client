@@ -9,6 +9,7 @@ import FilterTrucks from "./FilterTrucks";
 import { useData } from "@contexts/Data";
 import styles from "@styles/trucks/Trucks.module.css";
 import SectionLoader from "@components/layout/SectionLoader";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import ModalContainer from "@components/layout/ModalContainer";
 
 export default function Trucks({ filters, setFilters }: ITrucksProps) {
@@ -19,11 +20,14 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
     byLowToHigh: false,
     byHighToLow: false,
   });
-  const [showSortModal, setShowSortModal] = useState(false);
-  const [showFilterModal, setShowFilterModal] = useState(false);
+  const [showAllFilters, setShowAllFilters] = useState(false);
 
   return (
-    <section className={styles.trucks}>
+    <section
+      className={`${styles.trucks} ${
+        showAllFilters && styles.change_background
+      }`}
+    >
       {trucks.isLoading && <SectionLoader />}
 
       {!trucks.isLoading && trucks.data.length === 0 && (
@@ -42,10 +46,34 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
           </div>
 
           <div>
-            <div className={styles.filter_and_sort}>
-              <p onClick={() => setShowFilterModal(true)}>Filter</p>
-              <p onClick={() => setShowSortModal(true)}>Sort</p>
+            <div
+              className={`${styles.all_filters} ${
+                showAllFilters && styles.change_filter_style
+              }`}
+              onClick={() => setShowAllFilters((currState) => !currState)}
+            >
+              <p>All Filters</p>
+
+              {showAllFilters ? <IoIosArrowUp /> : <IoIosArrowDown />}
             </div>
+
+            {showAllFilters && (
+              <div
+                className={`${styles.middle_sort_and_filter} ${
+                  showAllFilters && styles.change_filter_and_sort_style
+                }`}
+              >
+                <SortTrucks
+                  setSorted={setSorted}
+                  filteredTrucks={filteredTrucks}
+                />
+
+                <FilterTrucks
+                  setFilters={setFilters}
+                  setFilteredTrucks={setFilteredTrucks}
+                />
+              </div>
+            )}
 
             <>
               <h1>
@@ -111,7 +139,7 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
         </div>
       )}
 
-      <ModalContainer
+      {/* <ModalContainer
         component={
           <FilterTrucks
             setFilters={setFilters}
@@ -132,7 +160,7 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
         }
         showModalContainer={showSortModal}
         setShowModalContainer={setShowSortModal}
-      />
+      /> */}
     </section>
   );
 }

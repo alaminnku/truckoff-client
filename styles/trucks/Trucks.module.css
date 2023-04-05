@@ -6,29 +6,37 @@
   padding: var(--section_padding);
 }
 
+.change_background {
+  background: rgba(16, 16, 16, 0.1);
+}
+
 .trucks h1 {
   font-size: 16px;
   margin-bottom: 16px;
 }
 
-.filter_and_sort {
+.all_filters {
   display: flex;
-  margin-bottom: 1rem;
+  padding: 20px;
+  margin-bottom: 30px;
   align-items: center;
+  background: #fcfcfc;
   justify-content: space-between;
 }
 
-.filter_and_sort p {
-  width: 50%;
-  cursor: pointer;
-  text-align: center;
-  color: var(--white);
-  padding: 0.75rem 0rem;
-  background: var(--chocolate);
+.middle_sort_and_filter {
+  background: #fcfcfc;
+  margin-bottom: 1rem;
 }
 
-.filter_and_sort p:first-child {
-  border-right: 1px solid var(--white);
+.change_filter_style {
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.change_filter_and_sort_style {
+  border-radius: 20px;
+  padding: 24px 21px;
 }
 
 .items {
@@ -108,7 +116,8 @@
     display: block;
   }
 
-  .filter_and_sort {
+  .all_filters,
+  .middle_sort_and_filter {
     display: none;
   }
 
