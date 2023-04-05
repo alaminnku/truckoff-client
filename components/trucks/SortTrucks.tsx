@@ -45,7 +45,7 @@ export default function SortTrucks({
       <form className={styles.sort_form}>
         <select onChange={(e) => setSortBy(e.target.value)}>
           <option value="Sort trucks by" hidden>
-            <span>Sort trucks by</span>
+            Sort trucks by
           </option>
           <option value="mostRecent">Most recent</option>
           <option value="lowToHigh">Price: Low to high</option>

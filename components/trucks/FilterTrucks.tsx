@@ -60,8 +60,6 @@ export default function FilterTrucks({
   // Destructure data
   const { name, minPrice, maxPrice } = truckData;
 
-  console.log(minPrice, maxPrice);
-
   // Change truck data
   function changeTruckData(e: ChangeEvent<HTMLInputElement>) {
     setTruckData((currState) => ({
@@ -161,29 +159,39 @@ export default function FilterTrucks({
     setShowAllFilters && setShowAllFilters(false);
   }
 
+  // Change slider range
   function handleChangeRange(e: ChangeEvent<HTMLInputElement>) {
+    const gap = 3000;
+    const id = e.target.id;
+    const value = e.target.value;
+
     setTruckData((currState) => ({
       ...currState,
-      [e.target.id]: +e.target.value,
+      [id]:
+        id === "minPrice"
+          ? currState.maxPrice - +value <= gap
+            ? currState.maxPrice - gap
+            : +value
+          : +value - currState.minPrice <= gap
+          ? currState.minPrice + gap
+          : +value,
     }));
   }
 
   return (
     <div className={styles.filter_trucks}>
-      <div className={styles.filter}>
-        <p className={styles.title}>Filters</p>
+      <p className={styles.title}>Filters</p>
 
-        <form onSubmit={filterTrucks} className={styles.name}>
-          <input
-            type="text"
-            value={name}
-            id="name"
-            onChange={changeTruckData}
-            placeholder="Search by keyword.."
-          />
-          <input type="submit" hidden />
-        </form>
-      </div>
+      <form onSubmit={filterTrucks} className={styles.name}>
+        <input
+          type="text"
+          value={name}
+          id="name"
+          onChange={changeTruckData}
+          placeholder="Search by keyword.."
+        />
+        <input type="submit" hidden />
+      </form>
 
       <div className={styles.price_range}>
         <div className={styles.slider}>
@@ -204,6 +212,7 @@ export default function FilterTrucks({
             id="minPrice"
             min={0}
             max={10000}
+            step={1000}
             value={minPrice}
             onChange={handleChangeRange}
           />
@@ -213,9 +222,23 @@ export default function FilterTrucks({
             id="maxPrice"
             min={0}
             max={10000}
+            step={1000}
             value={maxPrice}
             onChange={handleChangeRange}
           />
+        </div>
+
+        <div
+          className={styles.prices}
+          style={
+            {
+              "--margin_left": `${minPrice / 100 - 1}%`,
+              "--margin_right": ` ${100 - maxPrice / 100 - 3}%`,
+            } as CSSProperties
+          }
+        >
+          <p>${minPrice / 1000}k</p>
+          <p>${maxPrice / 1000}k</p>
         </div>
       </div>
 
