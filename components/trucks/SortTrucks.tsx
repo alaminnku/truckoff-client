@@ -1,5 +1,4 @@
 import { ISortTrucksProps } from "@types";
-import { BiSortAlt2 } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import styles from "@styles/trucks/SortTrucks.module.css";
 

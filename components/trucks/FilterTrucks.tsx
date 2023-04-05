@@ -1,7 +1,7 @@
 import { useData } from "@contexts/Data";
 import { brands, locations } from "@utils";
-import { IFilterTrucksProps } from "@types";
 import styles from "@styles/trucks/FilterTrucks.module.css";
+import { IFilterTrucksProps, IInitialTruckState } from "@types";
 import React, { useState, ChangeEvent, FormEvent, CSSProperties } from "react";
 
 export default function FilterTrucks({
@@ -39,12 +39,6 @@ export default function FilterTrucks({
     mitsubishi: false,
     freightliner: false,
   };
-
-  interface IInitialTruckState {
-    name: string;
-    minPrice: number;
-    maxPrice: number;
-  }
 
   // Hooks
   const { trucks } = useData();

@@ -68,3 +68,9 @@ export interface IHeadSectionProps {
   pageType: string;
   ogTitle: string;
 }
+
+export interface IInitialTruckState {
+  name: string;
+  minPrice: number;
+  maxPrice: number;
+}
