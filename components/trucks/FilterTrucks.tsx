@@ -1,8 +1,8 @@
 import { useData } from "@contexts/Data";
 import { brands, locations } from "@utils";
 import { IFilterTrucksProps } from "@types";
-import { useState, ChangeEvent, FormEvent } from "react";
 import styles from "@styles/trucks/FilterTrucks.module.css";
+import React, { useState, ChangeEvent, FormEvent, CSSProperties } from "react";
 
 export default function FilterTrucks({
   setFilters,
@@ -12,8 +12,8 @@ export default function FilterTrucks({
   // Initial states
   const initialTruckState = {
     name: "",
-    minPrice: "",
-    maxPrice: "",
+    minPrice: 0,
+    maxPrice: 10000,
   };
 
   const initialLocationState = {
@@ -40,11 +40,16 @@ export default function FilterTrucks({
     freightliner: false,
   };
 
+  interface IInitialTruckState {
+    name: string;
+    minPrice: number;
+    maxPrice: number;
+  }
+
   // Hooks
   const { trucks } = useData();
-  const [truckData, setTruckData] = useState<{ [key: string]: string }>(
-    initialTruckState
-  );
+  const [truckData, setTruckData] =
+    useState<IInitialTruckState>(initialTruckState);
   const [brandData, setBrandData] = useState<{ [key: string]: boolean }>(
     initialBrandState
   );
@@ -54,6 +59,8 @@ export default function FilterTrucks({
 
   // Destructure data
   const { name, minPrice, maxPrice } = truckData;
+
+  console.log(minPrice, maxPrice);
 
   // Change truck data
   function changeTruckData(e: ChangeEvent<HTMLInputElement>) {
@@ -154,6 +161,13 @@ export default function FilterTrucks({
     setShowAllFilters && setShowAllFilters(false);
   }
 
+  function handleChangeRange(e: ChangeEvent<HTMLInputElement>) {
+    setTruckData((currState) => ({
+      ...currState,
+      [e.target.id]: +e.target.value,
+    }));
+  }
+
   return (
     <div className={styles.filter_trucks}>
       <div className={styles.filter}>
@@ -169,6 +183,40 @@ export default function FilterTrucks({
           />
           <input type="submit" hidden />
         </form>
+      </div>
+
+      <div className={styles.price_range}>
+        <div className={styles.slider}>
+          <div
+            className={styles.progress}
+            style={
+              {
+                "--progress_left": `${minPrice / 100}%`,
+                "--progress_right": ` ${100 - maxPrice / 100}%`,
+              } as CSSProperties
+            }
+          ></div>
+        </div>
+
+        <div className={styles.range}>
+          <input
+            type="range"
+            id="minPrice"
+            min={0}
+            max={10000}
+            value={minPrice}
+            onChange={handleChangeRange}
+          />
+
+          <input
+            type="range"
+            id="maxPrice"
+            min={0}
+            max={10000}
+            value={maxPrice}
+            onChange={handleChangeRange}
+          />
+        </div>
       </div>
 
       <div className={styles.filter}>

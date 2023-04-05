@@ -1,5 +1,5 @@
-import styles from "@styles/layout/ModalContainer.module.css";
 import { Dispatch, SetStateAction } from "react";
+import styles from "@styles/layout/ModalContainer.module.css";
 
 interface IModalContainerProps {
   component: JSX.Element;
