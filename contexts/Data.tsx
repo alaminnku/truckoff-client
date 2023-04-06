@@ -1,4 +1,3 @@
-import { trucksData } from "@data/trucks";
 import { ITrucks, IContextProviderProps, IDataContext, ITruck } from "@types";
 import { createContext, useContext, useEffect, useState } from "react";
 
