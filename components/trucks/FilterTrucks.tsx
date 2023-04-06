@@ -2,7 +2,13 @@ import { useData } from "@contexts/Data";
 import { brands, locations } from "@utils";
 import styles from "@styles/trucks/FilterTrucks.module.css";
 import { IFilterTrucksProps, IInitialTruckState } from "@types";
-import React, { useState, ChangeEvent, FormEvent, CSSProperties } from "react";
+import React, {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  CSSProperties,
+  useEffect,
+} from "react";
 
 export default function FilterTrucks({
   setFilters,
@@ -42,6 +48,7 @@ export default function FilterTrucks({
 
   // Hooks
   const { trucks } = useData();
+  const [highestPrice, setHighestPrice] = useState(0);
   const [truckData, setTruckData] =
     useState<IInitialTruckState>(initialTruckState);
   const [brandData, setBrandData] = useState<{ [key: string]: boolean }>(
@@ -50,6 +57,26 @@ export default function FilterTrucks({
   const [locationData, setLocationData] = useState<{ [key: string]: boolean }>(
     initialLocationState
   );
+
+  // Range steps
+  const step = 10000;
+
+  // Get highest price
+  useEffect(() => {
+    // Get highest price
+    const highestPrice = Math.max(...trucks.data.map((truck) => +truck.price));
+
+    // Make highest price divided by step
+    const highestPriceRounded = highestPrice + step - (highestPrice % step);
+
+    // Update states
+    setTruckData((currState) => ({
+      ...currState,
+      maxPrice: highestPriceRounded,
+    }));
+
+    setHighestPrice(highestPriceRounded);
+  }, [trucks]);
 
   // Destructure data
   const { name, minPrice, maxPrice } = truckData;
@@ -155,10 +182,12 @@ export default function FilterTrucks({
 
   // Change slider range
   function handleChangeRange(e: ChangeEvent<HTMLInputElement>) {
-    const gap = 3000;
+    // Get gap, id and value
+    const gap = step * 5;
     const id = e.target.id;
     const value = e.target.value;
 
+    // Update state
     setTruckData((currState) => ({
       ...currState,
       [id]:
@@ -193,8 +222,10 @@ export default function FilterTrucks({
             className={styles.progress}
             style={
               {
-                "--progress_left": `${minPrice / 100}%`,
-                "--progress_right": ` ${100 - maxPrice / 100}%`,
+                "--progress_left": `${(minPrice / highestPrice) * 100}%`,
+                "--progress_right": ` ${
+                  100 - (maxPrice / highestPrice) * 100
+                }%`,
               } as CSSProperties
             }
           ></div>
@@ -205,9 +236,9 @@ export default function FilterTrucks({
             type="range"
             id="minPrice"
             min={0}
-            max={10000}
-            step={1000}
+            step={step}
             value={minPrice}
+            max={highestPrice}
             onChange={handleChangeRange}
           />
 
@@ -215,9 +246,9 @@ export default function FilterTrucks({
             type="range"
             id="maxPrice"
             min={0}
-            max={10000}
-            step={1000}
+            step={step}
             value={maxPrice}
+            max={highestPrice}
             onChange={handleChangeRange}
           />
         </div>
@@ -226,8 +257,8 @@ export default function FilterTrucks({
           className={styles.prices}
           style={
             {
-              "--margin_left": `${minPrice / 100 - 1}%`,
-              "--margin_right": ` ${100 - maxPrice / 100 - 3}%`,
+              "--margin_left": `${(minPrice / highestPrice) * 100}%`,
+              "--margin_right": ` ${100 - (maxPrice / highestPrice) * 100}%`,
             } as CSSProperties
           }
         >
