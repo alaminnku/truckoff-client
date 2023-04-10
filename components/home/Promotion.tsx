@@ -40,9 +40,9 @@ export default function Promotion() {
       </div>
 
       <Image
-        src="/truckoff-hero.png"
-        width={100}
-        height={100}
+        src="/images/promotion.png"
+        width={800}
+        height={800}
         alt="Truck image"
       />
     </section>
