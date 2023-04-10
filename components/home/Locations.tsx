@@ -6,7 +6,7 @@ import { locations } from "@utils";
 import { useData } from "@contexts/Data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "@styles/home/Locations.module.css";
 import { Swiper as SwiperType, Navigation } from "swiper";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
@@ -56,29 +56,31 @@ export default function Locations() {
         }}
         modules={[Navigation]}
       >
-        {locations.map((location, index) => (
-          <SwiperSlide key={index}>
-            <div className={styles.location}>
-              <Link href="/trucks" onClick={() => filterTrucks(location[0])}>
-                <Image
-                  src="/truckoff-hero.png"
-                  width={100}
-                  height={100}
-                  alt="Truck image"
-                />
+        {locations
+          .filter((location) => location[0] !== "QLD")
+          .map((location, index) => (
+            <SwiperSlide key={index}>
+              <div className={styles.location}>
+                <Link href="/trucks" onClick={() => filterTrucks(location[0])}>
+                  <Image
+                    src={`/locations/${location[0].toLowerCase()}.png`}
+                    width={100}
+                    height={100}
+                    alt="Truck image"
+                  />
 
-                <div className={styles.content}>
-                  <p>{location[1]}</p>
+                  <div className={styles.content}>
+                    <p>{location[1]}</p>
 
-                  <p>
-                    Show truck
-                    <AiOutlineArrowRight />
-                  </p>
-                </div>
-              </Link>
-            </div>
-          </SwiperSlide>
-        ))}
+                    <p>
+                      Show truck
+                      <AiOutlineArrowRight />
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            </SwiperSlide>
+          ))}
       </Swiper>
 
       {!swiperRef.current?.isEnd && (
