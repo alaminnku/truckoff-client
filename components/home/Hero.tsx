@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { useData } from "@contexts/Data";
 import { FormEvent, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import heroImage from "@public/truckoff-hero.png";
 import styles from "@styles/home/Hero.module.css";
 
 export default function Hero() {
@@ -29,7 +28,7 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
-      <Image src={heroImage} fill alt="TruckOff hero image" />
+      <Image src="/images/hero.png" fill alt="TruckOff hero image" />
 
       <div className={styles.content}>
         <h1>Find your next truck</h1>
