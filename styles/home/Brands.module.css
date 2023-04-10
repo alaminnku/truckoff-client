@@ -1,0 +1,8 @@
+.brands {
+  padding: 27px;
+  background: #f8f8f8;
+}
+
+.brands img {
+  object-fit: contain;
+}
