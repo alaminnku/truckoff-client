@@ -29,22 +29,22 @@ export const locations = [
 // Processes
 export const processes = [
   {
-    icon: "",
+    icon: "/processes/circle.png",
     content:
       "Our platform gathers truck listings from numerous dealer websites across Australia, providing you with a comprehensive selection in one convenient location.",
   },
   {
-    icon: "",
+    icon: "/processes/filter.png",
     content:
       "These listings are showcased on TruckOff, enabling you to easily filter and search for your ideal truck.",
   },
   {
-    icon: "",
+    icon: "/processes/message.png",
     content:
       "When you spot a truck that catches your eye, simply click the link and you will be directed to the original website where the truck is listed.",
   },
   {
-    icon: "",
+    icon: "/processes/wallet.png",
     content:
       "If you find a truck you want to purchase, you can either speak to our team about financing options, or reach out to the dealer directly to complete the transaction.",
   },

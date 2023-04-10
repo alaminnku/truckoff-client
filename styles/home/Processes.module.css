@@ -18,12 +18,39 @@
   width: 100%;
   padding: 24px 10px;
   border-radius: 25px;
-  min-height: 13rem;
+  min-height: 16.5rem;
   border: 1px solid var(--almost_white);
 }
 
 .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 22px;
+  background: #f8f8f8;
+  width: 71px;
+  height: 71px;
+  border-radius: 10px;
+}
+
+.circle img {
+  width: 28px;
+  height: 28px;
+}
+
+.filter img {
+  width: 21px;
+  height: 14px;
+}
+
+.message img {
+  width: 21px;
+  height: 21.5px;
+}
+
+.wallet img {
+  width: 23px;
+  height: 19px;
 }
 
 .process p {
@@ -59,6 +86,6 @@
   }
 
   .process {
-    min-height: 16rem;
+    min-height: 18rem;
   }
 }

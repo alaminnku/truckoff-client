@@ -45,7 +45,11 @@ export default function Processes() {
         {processes.map((process, index) => (
           <SwiperSlide key={index}>
             <div className={styles.process}>
-              <div className={styles.icon}>
+              <div
+                className={`${styles.icon} ${
+                  styles[process.icon.split("/")[2].split(".png")[0]]
+                }`}
+              >
                 <Image src={process.icon} width={100} height={100} alt="Icon" />
               </div>
 
