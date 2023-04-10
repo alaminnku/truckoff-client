@@ -1,3 +1,7 @@
 .partners {
   padding: var(--section_padding);
 }
+
+.partners img {
+  object-fit: contain;
+}

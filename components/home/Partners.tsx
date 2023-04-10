@@ -9,6 +9,16 @@ import styles from "@styles/home/Partners.module.css";
 export default function Partners() {
   const [isMobile, setIsMobile] = useState(true);
 
+  // Partners logos
+  const partners = [
+    "/partners/anz.png",
+    "/partners/commonwealth-bank.png",
+    "/partners/macquare.png",
+    "/partners/nab.png",
+    "/partners/st-george.png",
+    "/partners/westpac.png",
+  ];
+
   useEffect(() => {
     window.innerWidth > 768 && setIsMobile(false);
   });
@@ -17,32 +27,19 @@ export default function Partners() {
     <section className={styles.partners}>
       <Swiper
         autoplay={true}
-        spaceBetween={100}
-        slidesPerView={isMobile ? 2.5 : 4}
         modules={[Autoplay]}
-        className={styles.swiper}
+        slidesPerView={isMobile ? 3 : 6}
       >
-        <SwiperSlide>
-          <Image src="/truckoff-hero.png" width={200} height={100} alt="test" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src="/truckoff-hero.png" width={200} height={100} alt="test" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src="/truckoff-hero.png" width={200} height={100} alt="test" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src="/truckoff-hero.png" width={200} height={100} alt="test" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src="/truckoff-hero.png" width={200} height={100} alt="test" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src="/truckoff-hero.png" width={200} height={100} alt="test" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src="/truckoff-hero.png" width={200} height={100} alt="test" />
-        </SwiperSlide>
+        {partners.map((partner) => (
+          <SwiperSlide>
+            <Image
+              src={partner}
+              width={100}
+              height={100}
+              alt={`${partner} logo`}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );
