@@ -14,9 +14,9 @@ export default function Promotion() {
       <h2>Tell the others to TruckOff and get pre approved with us!</h2>
 
       <Image
-        src="/truckoff-hero.png"
-        width={100}
-        height={100}
+        src="/images/promotion.png"
+        width={800}
+        height={800}
         alt="Truck image"
       />
 
