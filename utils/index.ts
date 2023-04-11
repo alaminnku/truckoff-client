@@ -52,28 +52,68 @@ export const processes = [
 
 // Brand icons
 export const brandIcons = [
-  { grayed: "/brands/ford.png", colored: "/brands/ford-colored.png" },
   {
+    brand: "ford",
+    grayed: "/brands/ford.png",
+    colored: "/brands/ford-colored.png",
+  },
+  {
+    brand: "freightliner",
     grayed: "/brands/freightliner.png",
     colored: "/brands/freightliner-colored.png",
   },
-  { grayed: "/brands/fuso.png", colored: "/brands/fuso-colored.png" },
-  { grayed: "/brands/hino.png", colored: "/brands/hino-colored.png" },
-  { grayed: "/brands/isuzu.png", colored: "/brands/isuzu-colored.png" },
-  { grayed: "/brands/iveco.png", colored: "/brands/iveco-colored.png" },
-  { grayed: "/brands/kenworth.png", colored: "/brands/kenworth-colored.png" },
-  { grayed: "/brands/mack.png", colored: "/brands/mack-colored.png" },
   {
+    brand: "fuso",
+    grayed: "/brands/fuso.png",
+    colored: "/brands/fuso-colored.png",
+  },
+  {
+    brand: "hino",
+    grayed: "/brands/hino.png",
+    colored: "/brands/hino-colored.png",
+  },
+  {
+    brand: "isuzu",
+    grayed: "/brands/isuzu.png",
+    colored: "/brands/isuzu-colored.png",
+  },
+  {
+    brand: "iveco",
+    grayed: "/brands/iveco.png",
+    colored: "/brands/iveco-colored.png",
+  },
+  {
+    brand: "kenworth",
+    grayed: "/brands/kenworth.png",
+    colored: "/brands/kenworth-colored.png",
+  },
+  {
+    brand: "mack",
+    grayed: "/brands/mack.png",
+    colored: "/brands/mack-colored.png",
+  },
+  {
+    brand: "mercedes",
     grayed: "/brands/mercedes-benz.png",
     colored: "/brands/mercedes-benz-colored.png",
   },
   {
+    brand: "mitsubishi",
     grayed: "/brands/mitsubishi.png",
     colored: "/brands/mitsubishi-colored.png",
   },
-  { grayed: "/brands/toyota.png", colored: "/brands/toyota-colored.png" },
-  { grayed: "/brands/volvo.png", colored: "/brands/volvo-colored.png" },
   {
+    brand: "toyota",
+    grayed: "/brands/toyota.png",
+    colored: "/brands/toyota-colored.png",
+  },
+  {
+    brand: "volvo",
+    grayed: "/brands/volvo.png",
+    colored: "/brands/volvo-colored.png",
+  },
+  {
+    brand: "western",
     grayed: "/brands/western-star.png",
     colored: "/brands/western-star-colored.png",
   },
