@@ -30,8 +30,8 @@ export default function Partners() {
         modules={[Autoplay]}
         slidesPerView={isMobile ? 3 : 6}
       >
-        {partners.map((partner) => (
-          <SwiperSlide>
+        {partners.map((partner, index) => (
+          <SwiperSlide key={index}>
             <Image
               src={partner}
               width={100}

@@ -37,8 +37,8 @@ export default function Brands() {
         modules={[Autoplay]}
         slidesPerView={isMobile ? 3 : 8.5}
       >
-        {brandIcons.map((brandIcon) => (
-          <SwiperSlide className={styles.images}>
+        {brandIcons.map((brandIcon, index) => (
+          <SwiperSlide key={index} className={styles.images}>
             <Image
               src={brandIcon.grayed}
               width={100}
