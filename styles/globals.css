@@ -61,7 +61,6 @@ html,
 
 html,
 body {
-  max-width: 1256px;
   margin: 0 auto;
   font-size: 16px;
   font-weight: 400;
@@ -112,13 +111,5 @@ textarea {
 @media (min-width: 1024px) {
   :root {
     --section_padding: 60px 120px;
-  }
-}
-
-@media (min-width: 1256px) {
-  html,
-  body {
-    border-left: 1px solid var(--almost_white);
-    border-right: 1px solid var(--almost_white);
   }
 }

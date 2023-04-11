@@ -19,11 +19,11 @@ export const brands = [
 
 // Locations
 export const locations = [
+  ["NSW", "New South Wales"],
   ["VIC", "Victoria"],
+  ["WA", "Western Australia"],
   ["QLD", "Queensland"],
   ["SA", "South Australia"],
-  ["NSW", "New South Wales"],
-  ["WA", "Western Australia"],
 ];
 
 // Processes

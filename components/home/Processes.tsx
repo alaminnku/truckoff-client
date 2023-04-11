@@ -1,17 +1,13 @@
 import "swiper/css";
 import "swiper/css/navigation";
+import Image from "next/image";
 import { processes } from "@utils";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "@styles/home/Processes.module.css";
-import { Swiper as SwiperType, Navigation } from "swiper";
-import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
-import Image from "next/image";
 
 export default function Processes() {
   // Hooks
-  const swiperRef = useRef<SwiperType>();
-  const [slideIndex, setSlideIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
@@ -22,26 +18,7 @@ export default function Processes() {
     <section className={styles.processes}>
       <p className={styles.title}>How it works</p>
 
-      <Swiper
-        spaceBetween={25}
-        slidesPerView={isMobile ? 1.25 : 4}
-        onBeforeInit={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        modules={[Navigation]}
-      >
-        {!swiperRef.current?.isBeginning && isMobile && (
-          <button
-            className={styles.prev_button}
-            onClick={() => {
-              swiperRef.current?.slidePrev();
-              setSlideIndex(swiperRef.current?.activeIndex as number);
-            }}
-          >
-            <RiArrowLeftSLine />
-          </button>
-        )}
-
+      <Swiper spaceBetween={25} slidesPerView={isMobile ? 1.25 : 4}>
         {processes.map((process, index) => (
           <SwiperSlide key={index}>
             <div className={styles.process}>
@@ -57,18 +34,6 @@ export default function Processes() {
             </div>
           </SwiperSlide>
         ))}
-
-        {!swiperRef.current?.isEnd && isMobile && (
-          <button
-            className={styles.next_button}
-            onClick={() => {
-              swiperRef.current?.slideNext();
-              setSlideIndex(swiperRef.current?.activeIndex as number);
-            }}
-          >
-            <RiArrowRightSLine />
-          </button>
-        )}
       </Swiper>
     </section>
   );
