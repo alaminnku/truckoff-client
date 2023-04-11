@@ -6,3 +6,15 @@
 .brands img {
   object-fit: contain;
 }
+
+.colored {
+  display: none;
+}
+
+.images:hover .colored {
+  display: block;
+}
+
+.images:hover .grayed {
+  display: none;
+}

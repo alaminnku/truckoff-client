@@ -2,6 +2,7 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import Image from "next/image";
 import { Autoplay } from "swiper";
+import { brandIcons } from "@utils";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "@styles/home/Brands.module.css";
@@ -9,23 +10,6 @@ import styles from "@styles/home/Brands.module.css";
 export default function Brands() {
   // Hooks
   const [isMobile, setIsMobile] = useState(true);
-
-  // Brand icons
-  const brandIcons = [
-    "/brands/ford.png",
-    "/brands/freightliner.png",
-    "/brands/fuso.png",
-    "/brands/hino.png",
-    "/brands/isuzu.png",
-    "/brands/iveco.png",
-    "/brands/kenworth.png",
-    "/brands/mack.png",
-    "/brands/mercedes-benz.png",
-    "/brands/mitsubishi.png",
-    "/brands/toyota.png",
-    "/brands/volvo.png",
-    "/brands/western-star.png",
-  ];
 
   // Check view port width
   useEffect(() => {
@@ -37,15 +21,30 @@ export default function Brands() {
       <Swiper
         autoplay={true}
         modules={[Autoplay]}
-        slidesPerView={isMobile ? 3 : 8}
+        slidesPerView={isMobile ? 3 : 8.5}
       >
         {brandIcons.map((brandIcon) => (
-          <SwiperSlide>
+          <SwiperSlide className={styles.images}>
             <Image
-              src={brandIcon}
+              src={brandIcon.grayed}
               width={100}
               height={100}
-              alt={`${brandIcon.split("/")[2].split(".png")[0]} icon`}
+              className={styles.grayed}
+              alt={`${brandIcon.grayed
+                .replace("/brands/", "")
+                .replace("-", " ")
+                .replace(".png", "")} icon`}
+            />
+
+            <Image
+              src={brandIcon.colored}
+              width={100}
+              height={100}
+              className={styles.colored}
+              alt={`${brandIcon.colored
+                .replace("/brands/", "")
+                .replace("-", " ")
+                .replace(".png", "")} icon`}
             />
           </SwiperSlide>
         ))}
