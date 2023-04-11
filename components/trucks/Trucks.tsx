@@ -90,8 +90,9 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
               {filteredTrucks.map((truck, index) => (
                 <div className={styles.item} key={index}>
                   <Link
-                    href="/view-truck"
-                    onClick={() => localStorage.setItem("origin", truck.origin)}
+                    href={truck.origin}
+                    // href="/view-truck"
+                    // onClick={() => localStorage.setItem("origin", truck.origin)}
                   >
                     <div className={styles.image}>
                       <Image
@@ -111,11 +112,12 @@ export default function Trucks({ filters, setFilters }: ITrucksProps) {
                     <p className={styles.description}>{truck.name}</p>
 
                     <Link
+                      href={truck.origin}
+                      // href="/view-truck"
+                      // onClick={() =>
+                      //   localStorage.setItem("origin", truck.origin)
+                      // }
                       className={styles.view_truck_button}
-                      href="/view-truck"
-                      onClick={() =>
-                        localStorage.setItem("origin", truck.origin)
-                      }
                     >
                       View Truck
                     </Link>

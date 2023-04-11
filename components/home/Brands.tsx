@@ -21,7 +21,6 @@ export default function Brands() {
 
   // Filter trucks
   function filterTrucks(brand: string) {
-    // Filter trucks
     setFilteredTrucks(() =>
       trucks.data.filter(
         (truck) =>

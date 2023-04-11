@@ -62,8 +62,8 @@ export default function Locations() {
               <Link href="/trucks" onClick={() => filterTrucks(location[0])}>
                 <Image
                   src={`/locations/${location[0].toLowerCase()}.png`}
-                  width={100}
-                  height={100}
+                  width={800}
+                  height={800}
                   alt="Truck image"
                 />
 
